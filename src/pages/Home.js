@@ -1,36 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaChartLine, FaQuoteLeft, FaAngleDoubleRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaChartLine, FaQuoteLeft, FaArrowLeft, FaArrowRight, FaCheckCircle, FaPlay, FaPause } from 'react-icons/fa';
 import LeadForm from '../components/LeadForm';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   
+  // Original Kashish Joshi content with enhanced variety
   const slides = [
     {
       backgroundImage: '/assets/images/hero-img.png',
       title: 'Call Now 8302463768 SEBI ® No INH000017240',
       subtitle: 'Kashish Joshi Research',
-      // description: 'Research Analyst: Kashish Joshi, SEBI Registration No. INH000017240'
+      // description: 'Research Analyst: Kashish Joshi, SEBI Registration No. INH000017240. Get professional guidance for your trading and investment decisions.'
     },
     {
       backgroundImage: '/assets/images/hero-img-2.jpg',
-      title: 'RESEARCH ANALYST: KASHISH JOSHI, SEBI REGISTRATION NO. INH000017240  ',
+      title: 'Research Analyst: Kashish Joshi, SEBI Registration No. INH000017240.',
       subtitle: 'Kashish Joshi Research',
-      // description: 'Get professional guidance for your trading and investment decisions'
+      // description: 'Maximize your trading profits with our fundamental monetary concepts and expert market analysis. 8+ years of trusted financial services.'
     }
   ];
 
+  // Auto-slide functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000); // Change slide every 4 seconds
+    
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, slides.length]);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setIsAutoPlaying(false); // Stop auto-play when user manually navigates
+    setTimeout(() => setIsAutoPlaying(true), 10000); // Resume auto-play after 10 seconds
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setIsAutoPlaying(false); // Stop auto-play when user manually navigates
+    setTimeout(() => setIsAutoPlaying(true), 10000); // Resume auto-play after 10 seconds
   };
 
-  // Testimonial slider functions
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
@@ -39,53 +55,41 @@ const Home = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // // Auto-play functionality matching original
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  //   }, 5000); // Change slide every 5 seconds
-
-  //   return () => clearInterval(interval);
-  // }, [slides.length]);
+  // Original Kashish Joshi services
   const services = [
     {
-      icon: "fluent-mdl2:design",
       title: "Stock Cash",
       description: "Cash Services for Stocks Kashish Joshi Research offers Stock Cash intraday calls.",
       link: "/services"
     },
     {
-      icon: "fluent:archive-settings-24-regular",
       title: "Option Services",
       description: "Kashish Joshi Research offers stock option intraday calls.",
       link: "/services"
     },
     {
-      icon: "carbon:application-web",
       title: "Future",
       description: "Kashish Joshi Research offers stock futures intraday calls.",
       link: "/services"
     },
     {
-      icon: "ant-design:radar-chart-outlined",
       title: "Banknifty / Nifty Options",
       description: "Kashish Joshi Research will offer our clients' INDEX Tips in the NSE market.",
       link: "/services"
     },
     {
-      icon: "ion:diamond-outline",
       title: "Banknifty / Nifty Futures",
       description: "Kashish Joshi Research will offer our clients' INDEX Tips in the NSE market. Our highest-quality provider is Nifty Option Tips.",
       link: "/services"
     },
     {
-      icon: "bi:puzzle",
       title: "Systematic Trading Plan",
       description: "We are the creators of the Systematic Trading Plan (STP), a highly special offering for all traders, investors, and other market players.",
       link: "/services"
     }
   ];
 
+  // Original Kashish Joshi testimonials
   const testimonials = [
     {
       name: "Manoj Panday",
@@ -99,6 +103,7 @@ const Home = () => {
     }
   ];
 
+  // Original Kashish Joshi FAQs
   const faqs = [
     {
       question: "What types of services does Kashish Joshi offer?",
@@ -116,33 +121,40 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section - Slider with arrows matching original */}
+      {/* Hero Section - Phoenix Capital Layout with Kashish Content */}
       <section 
-        className="hero-section text-white relative bg-cover bg-center bg-no-repeat transition-all duration-500"
-        style={{
-          backgroundImage: `url('${slides[currentSlide].backgroundImage}')`,
-          minHeight: '50vh',
-          padding: '50px 0'
-        }}
+        className="hero-section relative min-h-screen flex items-center"
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
       >
-        {/* Blue overlay matching original */}
+        {/* Background Image */}
         <div 
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
           style={{
-            backgroundImage: `url('/assets/images/overlay.png')`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover'
+            backgroundImage: `url('${slides[currentSlide].backgroundImage}')`,
           }}
-        ></div>
+        />
         
-        {/* Slider Navigation Arrows - matching original positioning */}
-        <div className='grid grid-col'>
-          <button
+        {/* Phoenix Capital Gradient Overlay - Reduced opacity to show background images */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/60 via-blue-900/50 to-slate-900/65" />
+        
+        {/* Additional Phoenix Effects Overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-slate-900/15"></div>
+          <div className="absolute top-0 left-0 w-full h-full opacity-8">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-300 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-blue-400 rounded-full blur-2xl"></div>
+          </div>
+        </div>
+        
+        {/* Navigation Arrows */}
+        <button
           onClick={prevSlide}
           className="hero-slider-arrow"
           style={{ right: '6%' }}
         >
-          <FaArrowRight />
+          <FaArrowLeft />
         </button>
         
         <button
@@ -150,172 +162,179 @@ const Home = () => {
           className="hero-slider-arrow"
           style={{ right: '2%' }}
         >
-          <FaArrowLeft />
+          <FaArrowRight />
         </button>
+        
+        {/* Play/Pause Button */}
+        {/* <button
+          onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+          className="hero-slider-arrow"
+          style={{ right: '10%' }}
+          title={isAutoPlaying ? 'Pause Slideshow' : 'Play Slideshow'}
+        >
+          {isAutoPlaying ? <FaPause /> : <FaPlay />}
+        </button> */}
+        
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setCurrentSlide(index);
+                setIsAutoPlaying(false);
+                setTimeout(() => setIsAutoPlaying(true), 10000);
+              }}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide 
+                  ? 'bg-white scale-125' 
+                  : 'bg-white/50 hover:bg-white/75'
+              }`}
+            />
+          ))}
+        </div>
+        
+        {/* Auto-play progress bar */}
+        {isAutoPlaying && (
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20 z-20">
+            <motion.div
+              key={currentSlide}
+              className="h-full bg-gradient-to-r from-blue-400 to-green-400 shadow-lg"
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 4, ease: 'linear' }}
+            />
+          </div>
+        )}
+        
+        {/* Slide counter */}
+        <div className="absolute top-8 right-8 bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm font-medium z-20">
+          {currentSlide + 1} / {slides.length}
         </div>
         
         <div className="container-custom relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[60vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.8 }}
-              className="hero-content"
+              className="text-white order-2 lg:order-1"
             >
-              <div className="mb-4">
-                <p className="flex items-center text-white mb-4 text-sm lg:text-sm relative hero-text-p">
-                  <FaAngleDoubleRight className="mr-2" />
-                  {slides[currentSlide].title}
-                </p>
-                <h1 className="text-2xl lg:text-4xl xl:text-5xl font-bold mb-6 text-white leading-tight">
-                  <span className="text-2xl lg:text-3xl xl:text-4xl font-bold">{slides[currentSlide].subtitle}</span>
-                </h1>
-              </div>
-              <div className="hero-cta">
-                <a href="#contact" className="btn-primary text-lg px-4 py-2">
+              <motion.div 
+                className="inline-flex items-center px-3 py-2 lg:px-4 lg:py-2 bg-white/10 backdrop-blur-sm rounded-full text-xs lg:text-sm font-medium text-white mb-4 lg:mb-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <FaCheckCircle className="mr-2 text-blue-400 text-sm lg:text-base" />
+                <span className="text-xs lg:text-sm">{slides[currentSlide].title}</span>
+              </motion.div>
+              
+              <motion.h1 
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-6xl font-bold mb-4 lg:mb-6 leading-tight"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                {slides[currentSlide].subtitle}
+              </motion.h1>
+              
+              {/* <motion.p 
+                className="text-base lg:text-xl text-gray-200 mb-6 lg:mb-8 leading-relaxed"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                {slides[currentSlide].description || 'Professional stock market advisory services with SEBI registered research analyst. Get expert guidance for your trading and investment decisions.'}
+              </motion.p> */}
+              
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-3 lg:gap-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 0, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <a href="#contact" className="btn-primary text-center">
                   Book Your Free Trial
                 </a>
-              </div>
+              </motion.div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="hero-form"
+              className="relative order-1 lg:order-2"
             >
-              <LeadForm />
+              <div>
+                <LeadForm />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* About Section - Matching Original Design Exactly */}
-      <section className="about bg-white" style={{padding: '188px 0'}}>
+      {/* About Section - Phoenix Layout with Kashish Content */}
+      <section className="py-12 lg:py-20 bg-white about-section">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="section-title mb-4">
-                <div className="sub-heading flex items-center mb-2">
-                  <img src="/assets/images/section-title-icon.png" alt="caret" className="mr-2" />
-                  <p style={{color: '#00A651', fontWeight: '500', margin: '0 0 0 10px'}}>Who we are</p>
+              <div className="mb-6 lg:mb-8">
+                <div className="sub-heading mb-3 lg:mb-4">
+                  <span className="text-blue-600 font-semibold text-xs lg:text-sm uppercase tracking-wider">
+                    Who we are
+                  </span>
                 </div>
-                <h2 style={{color: '#031031', fontSize: '30px', fontWeight: '600', lineHeight: '44px', marginBottom: '0'}}>About us</h2>
+                <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-4 lg:mb-6">
+                  About us
+                </h2>
+                <div className="w-16 lg:w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-500 mb-4 lg:mb-6"></div>
               </div>
               
-              <div className="text-content" style={{marginTop: '10px'}}>
-                <p className="mb-6" style={{color: '#647589', fontSize: '16px', fontWeight: '400', lineHeight: '1.7', marginBottom: '0'}}>
+              <div className="space-y-4 lg:space-y-6 text-base lg:text-lg text-gray-600 leading-relaxed">
+                <p>
                   Kashish Joshi Research is one of the financial companies that traders trust with their lives. 
                   We provide professional services for trading stocks and commodities. Our goal is to provide 
                   our clients with market knowledge and expertise so they may maximize their trading profits. 
                   We provide services to all of our clients by using fundamental monetary concepts. We provide 
                   all of our clients with fair and knowledgeable training.
                 </p>
-                <p className="mb-6" style={{color: '#647589', fontSize: '16px', fontWeight: '400', lineHeight: '1.7', marginBottom: '0', marginTop: '24px'}}>
+                <p>
                   As a prosperous stock advising business, we typically prioritize your financial goals, 
                   which helps you eventually achieve financial autonomy. We have continuously worked to 
                   provide a challenging and knowledgeable environment in which to handle the latest innovations. 
                   This has helped us provide our traders with the greatest share market advice, which benefits them all.
                 </p>
+              </div>
 
-                {/* Progress Bars - Matching Original Exactly */}
-                <div className="progress-wrapper flex items-center" style={{margin: '30px 0'}}>
-                  <div className="progress-one flex items-center mr-8">
-                    <div className="progress-bar relative" style={{height: '100px', width: '100px', backgroundColor: 'transparent'}}>
-                      <div className="background absolute rounded-full" style={{height: '100px', width: '100px', backgroundColor: '#b3cef6'}}></div>
-                      <motion.div
-                        className="rotate absolute rounded-full"
-                        style={{
-                          height: '100px', 
-                          width: '100px', 
-                          backgroundColor: '#00A651',
-                          clipPath: 'rect(0 50px 100px 0)',
-                          transformOrigin: '50px 50px'
-                        }}
-                        initial={{ transform: 'rotate(0deg)' }}
-                        whileInView={{ transform: 'rotate(324deg)' }} // 90% of 360deg
-                        transition={{ duration: 2, delay: 0.5 }}
-                        viewport={{ once: true }}
-                      ></motion.div>
-                      <div className="absolute flex items-center justify-center rounded-full" style={{
-                        height: '75px', 
-                        width: '75px', 
-                        left: '12.5px', 
-                        top: '12.5px', 
-                        backgroundColor: '#fff',
-                        color: '#031031',
-                        fontSize: '18px',
-                        fontFamily: 'Poppins, sans-serif'
-                      }}>
-                        90%
-                      </div>
-                    </div>
-                    <h5 style={{marginLeft: '10px', fontSize: '18px', paddingRight: '15px', lineHeight: '25px', color: '#031031', fontWeight: '600'}}>
-                      Client<br />Satisfied
-                    </h5>
-                  </div>
-
-                  <div className="progress-two flex items-center">
-                    <div className="progress-bar relative" style={{height: '100px', width: '100px', backgroundColor: 'transparent'}}>
-                      <div className="background absolute rounded-full" style={{height: '100px', width: '100px', backgroundColor: '#b3cef6'}}></div>
-                      <motion.div
-                        className="rotate absolute rounded-full"
-                        style={{
-                          height: '100px', 
-                          width: '100px', 
-                          backgroundColor: '#00A651',
-                          clipPath: 'rect(0 50px 100px 0)',
-                          transformOrigin: '50px 50px'
-                        }}
-                        initial={{ transform: 'rotate(0deg)' }}
-                        whileInView={{ transform: 'rotate(270deg)' }} // 75% of 360deg
-                        transition={{ duration: 2, delay: 0.7 }}
-                        viewport={{ once: true }}
-                      ></motion.div>
-                      <div className="absolute flex items-center justify-center rounded-full" style={{
-                        height: '75px', 
-                        width: '75px', 
-                        left: '12.5px', 
-                        top: '12.5px', 
-                        backgroundColor: '#fff',
-                        color: '#031031',
-                        fontSize: '18px',
-                        fontFamily: 'Poppins, sans-serif'
-                      }}>
-                        75%
-                      </div>
-                    </div>
-                    <h5 style={{marginLeft: '10px', fontSize: '18px', paddingRight: '15px', lineHeight: '25px', color: '#031031', fontWeight: '600'}}>
-                      Financial<br />Consultation
-                    </h5>
-                  </div>
+              {/* Progress Bars - Original Kashish Content */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-8 lg:mt-12">
+                <div className="text-center p-4 lg:p-6 progress-card">
+                  <div className="text-2xl lg:text-3xl font-bold mb-2 percentage">90%</div>
+                  <div className="text-xs lg:text-sm font-medium text-gray-600">Client Satisfied</div>
                 </div>
+                <div className="text-center p-4 lg:p-6 progress-card">
+                  <div className="text-2xl lg:text-3xl font-bold mb-2 percentage">75%</div>
+                  <div className="text-xs lg:text-sm font-medium text-gray-600">Financial Consultation</div>
+                </div>
+              </div>
 
-                <p className="padding-text" style={{color: '#647589', fontSize: '16px', fontWeight: '400', lineHeight: '1.7', paddingRight: '100px', marginBottom: '0'}}>
+              <div className="mt-6 lg:mt-8">
+                <p className="text-gray-600 mb-4 lg:mb-6 text-sm lg:text-base">
                   We at Kashish Joshi Research are not simply focused on financial services. 
                   You'll see that we partner with you as financial advisors. For the previous eight years, 
                   we have served by providing our services.
                 </p>
-
-                <a className='about-btn' href='/about' style={{
-                  padding: '14px 31px',
-                  color: '#fff',
-                  marginTop: '28px',
-                  background: '#00A651',
-                  display: 'inline-block',
-                  textDecoration: 'none',
-                  borderRadius: '8px',
-                  fontWeight: '600',
-                  textTransform: 'capitalize',
-                  fontFamily: 'Poppins, sans-serif',
-                  transition: 'all 0.3s ease'
-                }}>Learn More</a>
+                <a href="/about" className="btn-primary inline-block">
+                  Learn More
+                </a>
               </div>
             </motion.div>
 
@@ -324,7 +343,7 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="about-img relative"
+              className="relative"
             >
               <img src="/assets/images/about-image.png" alt="team" className="w-full" />
               <img src="/assets/images/abt-overlay.png" alt="overlay" className="overlay absolute top-0 left-0 w-full h-full" />
@@ -332,12 +351,12 @@ const Home = () => {
               <div className="experience absolute text-center" style={{
                 background: '#031031',
                 color: '#fff',
-                padding: '36px 115px',
-                left: '-14%',
-                bottom: '-13%'
+                padding: '36px 60px',
+                left: '-10%',
+                bottom: '-8%'
               }}>
                 <span style={{
-                  fontSize: '120px',
+                  fontSize: '80px',
                   fontFamily: 'Poppins, sans-serif',
                   fontWeight: '600',
                   display: 'block',
@@ -379,33 +398,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section - Matching Original */}
-      <section 
-        className="section-padding relative bg-cover bg-no-repeat bg-top"
-        style={{
-          backgroundImage: `url('/assets/images/offer-bg.png')`,
-          marginTop: '47px',
-          padding: '135px 0'
-        }}
-      >
-        <div className="container-custom">
+      {/* Services Section - Phoenix Layout with Kashish Content */}
+      <section className="py-12 lg:py-20 services-section">
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 lg:mb-16"
           >
-            <div className="section-title flex flex-col items-center" style={{marginBottom: '65px'}}>
-              <div className="flex items-center mb-2">
-                <img src="/assets/images/section-title-icon.png" alt="caret" className="mr-2" />
-                <span className="sub-heading">What we offer</span>
-              </div>
-              <h2 className="text-3xl lg:text-4xl font-bold" style={{color: '#031031'}}>Our Services</h2>
+            <div className="sub-heading mb-3 lg:mb-4">
+              <span className="text-blue-600 font-semibold text-xs lg:text-sm uppercase tracking-wider">
+                What we offer
+              </span>
             </div>
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-4 lg:mb-6">
+              Our Services
+            </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -413,28 +426,20 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="offer-wrapper cursor-pointer"
+                className="offer-wrapper group"
               >
-                <div className="service-icon mb-4" style={{color: '#00A651', fontSize: '40px'}}>
+                <div className="service-icon floating-element">
                   <FaChartLine />
                 </div>
-                <h5 style={{color: '#031031', marginBottom: '12px', fontSize: '18px', fontWeight: '600'}}>{service.title}</h5>
-                <p style={{color: '#647589', fontSize: '15px', marginBottom: '8px', lineHeight: '1.6'}}>{service.description}</p>
+                
+                <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4 lg:mb-6 leading-relaxed text-sm lg:text-base">{service.description}</p>
+                
                 <a
                   href={service.link}
-                  style={{
-                    color: '#031031',
-                    fontSize: '12px',
-                    letterSpacing: '1px',
-                    marginTop: '8px',
-                    display: 'inline-block',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s linear'
-                  }}
-                  onMouseOver={(e) => e.target.style.textDecoration = 'underline'}
-                  onMouseOut={(e) => e.target.style.textDecoration = 'none'}
+                  className="text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm lg:text-base"
                 >
-                  Explore More <FaAngleDoubleRight className="inline ml-1" />
+                  Explore More →
                 </a>
               </motion.div>
             ))}
@@ -442,356 +447,158 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section - Matching Original Green Design */}
-      <section 
-        className="text-white relative"
-        style={{
-          backgroundColor: '#00A651',
-          padding: '76px 0 67px'
-        }}
-      >
-        <div className="container-custom">
-          <div className="flex flex-col lg:flex-row items-center justify-between">
+      {/* CTA Section - Phoenix Layout */}
+      <section className="py-12 lg:py-20 bg-gradient-to-r from-blue-600 via-blue-700 to-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-y-12"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-slate-900/20"></div>
+          <div className="absolute top-0 left-0 w-full h-full opacity-10">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-300 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-blue-400 rounded-full blur-2xl"></div>
+          </div>
+        </div>
+        
+        <div className="container-custom relative z-10">
+          <div className="text-center text-white">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center mb-2">
-                <img src="/assets/images/icon-white.png" alt="caret" className="mr-2" />
-                <span className="font-semibold" style={{color: 'rgba(255, 255, 255, 0.8)'}}>Live Market Support</span>
+              <div className="sub-heading mb-3 lg:mb-4">
+                <span className="text-blue-400 font-semibold text-xs lg:text-sm uppercase tracking-wider">
+                  Live Market Support
+                </span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-white">
+              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 lg:mb-8">
                 Start Chat with our Research Expert
               </h2>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <a
-                href="https://wa.link/iw4ct4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 lg:mt-0 inline-block"
-                style={{
-                  background: '#fff',
-                  color: '#00A651',
-                  fontWeight: '600',
-                  padding: '17px 25px',
-                  borderRadius: '8px',
-                  transition: 'all 0.3s ease',
-                  textDecoration: 'none',
-                  textTransform: 'capitalize',
-                  fontFamily: 'Poppins, sans-serif'
-                }}
-                onMouseOver={(e) => {e.target.style.background = '#f0f0f0'}}
-                onMouseOut={(e) => {e.target.style.background = '#fff'}}
-              >
-                <span>Whatsapp Now <FaAngleDoubleRight className="inline ml-1" /></span>
-              </a>
+              
+              <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center max-w-md mx-auto">
+                <a
+                  href="https://wa.link/iw4ct4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-blue-600 px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-semibold text-sm lg:text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  WhatsApp Now
+                </a>
+                <a
+                  href="tel:+91 91717 18451"
+                  className="border-2 border-white text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-semibold text-sm lg:text-lg hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  Call Now: +91 9171718451
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section - Matching Original with video.png background */}
-      {/* <section 
-        className="testimonials relative bg-cover bg-no-repeat bg-top"
-        style={{
-          backgroundImage: `url('/assets/images/video.png')`,
-          padding: '67px 0',
-          marginTop: '-21%'
-        }}
-      > */}
-        {/* Dark overlay matching original */}
-        {/* <div 
-          className="absolute inset-0 w-full h-full"
-          style={{
-            background: '#031031',
-            opacity: '0.6'
-          }}
-        ></div> */}
+      {/* Testimonials Section - Phoenix Layout with Kashish Content */}
+      <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-20 left-20 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-20"></div>
+            <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-300 rounded-full blur-3xl opacity-15"></div>
+          </div>
+        </div>
         
-        {/* <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 lg:mb-16"
+          >
+            <div className="sub-heading mb-3 lg:mb-4">
+              <span className="text-blue-600 font-semibold text-xs lg:text-sm uppercase tracking-wider">
+                Review
+              </span>
+            </div>
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-4 lg:mb-6">
+              Clients Review
+            </h2>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="z-id-10 relative z-10"
+              key={currentTestimonial}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-xl lg:rounded-2xl p-6 lg:p-8 shadow-lg border border-gray-100 relative testimonial-card"
+              style={{
+                background: 'linear-gradient(145deg, #ffffff 0%, #f8fafc 100%)',
+                boxShadow: '0 20px 40px -10px rgba(30, 64, 175, 0.1), 0 8px 16px -4px rgba(30, 64, 175, 0.05)'
+              }}
             >
-              <div className="testimonial-slider">
-                <motion.div 
-                  key={currentTestimonial}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="testimonial-wrapper bg-white relative" 
-                  style={{padding: '52px 33px', boxShadow: '0px 7px 55px rgba(52, 62, 97, 0.06)'}}
+              {/* Navigation arrows */}
+              <div className="absolute top-4 lg:top-6 right-4 lg:right-6 flex gap-2 lg:gap-3">
+                <button
+                  onClick={prevTestimonial}
+                  className="w-8 lg:w-10 h-8 lg:h-10 bg-gray-100 hover:bg-blue-600 hover:text-white rounded-full flex items-center justify-center transition-colors text-sm lg:text-base shadow-md hover:shadow-lg transform hover:scale-110"
                 >
-                  <FaQuoteLeft className="text-4xl mb-6" style={{color: '#00A651', opacity: '0.1', fontSize: '55px', marginBottom: '43px'}} />
-                  <p className="mb-6" style={{color: '#031031', marginBottom: '22px', fontSize: '16px', lineHeight: '1.6'}}>"{testimonials[currentTestimonial].content}"</p>
-                  <div className="client-info flex items-center">
-                    <div className="client-name ml-2">
-                      <h5 className="font-semibold" style={{color: '#031031', fontWeight: '600', margin: '0'}}>{testimonials[currentTestimonial].name}</h5>
-                      <span style={{color: '#00A651', fontSize: '14px'}}>{testimonials[currentTestimonial].role}</span>
-                    </div>
-                  </div>
-                </motion.div>
+                  <FaArrowLeft />
+                </button>
+                <button
+                  onClick={nextTestimonial}
+                  className="w-8 lg:w-10 h-8 lg:h-10 bg-gray-100 hover:bg-blue-600 hover:text-white rounded-full flex items-center justify-center transition-colors text-sm lg:text-base shadow-md hover:shadow-lg transform hover:scale-110"
+                >
+                  <FaArrowRight />
+                </button>
               </div>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="title flex justify-end z-10 relative"
-            >
-              <div>
-                <div className="flex items-center mb-2">
-                  <img src="/assets/images/section-title-icon.png" alt="caret" className="mr-2" />
-                  <span className="sub-heading" style={{color: '#00A651', fontWeight: '500'}}>Review</span>
+              {/* Quote icon */}
+              <FaQuoteLeft className="text-3xl lg:text-5xl text-blue-600 opacity-20 mb-4 lg:mb-6" />
+
+              {/* Testimonial content */}
+              <p className="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 leading-relaxed pr-16 lg:pr-20">
+                "{testimonials[currentTestimonial].content}"
+              </p>
+
+              {/* Client info */}
+              <div className="flex items-center">
+                <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm lg:text-lg mr-3 lg:mr-4 shadow-lg">
+                  {testimonials[currentTestimonial].name.charAt(0)}
                 </div>
-                <h2 className="text-3xl lg:text-4xl font-bold mb-8" style={{color: '#fff'}}>
-                  Clients Review
-                </h2>
+                <div>
+                  <h5 className="font-semibold text-slate-900 text-base lg:text-lg">
+                    {testimonials[currentTestimonial].name}
+                  </h5>
+                  <span className="text-blue-600 font-medium text-sm lg:text-base">
+                    {testimonials[currentTestimonial].role}
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
-        </div> */}
-        
-        {/* Navigation Arrows - positioned as per original */}
-        {/* <button 
-          onClick={prevTestimonial}
-          className="slick-prev pull-left slick-arrow absolute"
-          style={{
-            top: '14%',
-            right: '14%',
-            zIndex: '99999',
-            display: 'inline-block',
-            border: 'none',
-            background: 'transparent',
-            color: '#00A651',
-            borderRadius: '50%',
-            height: '30px',
-            width: '30px',
-            fontSize: '20px',
-            cursor: 'pointer'
-          }}
-        >
-          <FaArrowLeft />
-        </button> */}
-        
-        {/* <button 
-          onClick={nextTestimonial}
-          className="slick-next pull-right slick-arrow absolute"
-          style={{
-            right: '7%',
-            top: '14%',
-            zIndex: '99999',
-            display: 'inline-block',
-            border: 'none',
-            background: 'transparent',
-            color: '#00A651',
-            borderRadius: '50%',
-            height: '30px',
-            width: '30px',
-            fontSize: '20px',
-            cursor: 'pointer'
-          }}
-        >
-          <FaArrowRight />
-        </button> */}
-      {/* </section> */}
-
-
-    {/* ✅ PERFECT TESTIMONIAL SECTION */}
-<section 
-  className="relative"
-  style={{
-    backgroundImage: `url('/assets/images/video.png')`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'top',
-    padding: '80px 0',
-    marginTop: '10%'
-  }}
->
-  {/* Dark Overlay */}
-  <div
-    style={{
-      position: 'absolute',
-      inset: 0,
-      background: '#031031',
-      opacity: 0.7
-    }}
-  />
-
-  <div className="container-custom relative z-10">
-    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
-
-      {/* LEFT SIDE - CARD */}
-      <motion.div
-        key={currentTestimonial}
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div
-          style={{
-            background: '#f3f3f3',
-            padding: '50px 40px',
-            maxWidth: '520px',
-            position: 'relative',
-            boxShadow: '0px 10px 60px rgba(0,0,0,0.1)',
-            top: '-200px'
-          }}
-        >
-
-          {/* 🔥 ARROWS (ON CARD) */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              display: 'flex',
-              gap: '12px'
-            }}
-          >
-            <button
-              onClick={prevTestimonial}
-              style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                border: 'none',
-                background: '#fff',
-                color: '#00A651',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 3px 10px rgba(0,0,0,0.1)',
-                cursor: 'pointer'
-              }}
-            >
-              <FaArrowLeft />
-            </button>
-
-            <button
-              onClick={nextTestimonial}
-              style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                border: 'none',
-                background: '#fff',
-                color: '#00A651',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 3px 10px rgba(0,0,0,0.1)',
-                cursor: 'pointer'
-              }}
-            >
-              <FaArrowRight />
-            </button>
-          </div>
-
-          {/* Quote Icon */}
-          <FaQuoteLeft
-            style={{
-              fontSize: '55px',
-              color: '#00A651',
-              opacity: 0.15,
-              marginBottom: '30px'
-            }}
-          />
-
-          {/* Text */}
-          <p
-            style={{
-              color: '#031031',
-              fontSize: '16px',
-              lineHeight: '1.7',
-              marginBottom: '25px'
-            }}
-          >
-            "{testimonials[currentTestimonial].content}"
-          </p>
-
-          {/* Name */}
-          <h5 style={{ fontWeight: '600', margin: 0 }}>
-            {testimonials[currentTestimonial].name}
-          </h5>
-
-          <span style={{ color: '#00A651', fontSize: '14px' }}>
-            {testimonials[currentTestimonial].role}
-          </span>
         </div>
-      </motion.div>
+      </section>
 
-      {/* RIGHT SIDE - HEADING */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-        style={{ marginTop: '-600px' }} 
-      >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-            <img
-              src="/assets/images/section-title-icon.png"
-              alt=""
-              style={{ marginRight: '8px', marginLeft: '-80px'}}
-            />
-            <span style={{ color: '#00A651', fontWeight: '500'}}>
-              Review
-            </span>
-          </div>
-
-          <h2
-            style={{
-              color: '[#031031]',
-              fontSize: '50px',
-              fontWeight: '600',
-              marginTop: '-20px',
-              marginLeft: '-80px'
-            }}
-          >
-            Clients Review
-          </h2>
-        </div>
-      </motion.div>
-
-    </div>
-  </div>
-</section>
-
-
-      {/* FAQ Section - Matching Original */}
-      <section className="" id="faq" style={{padding: '135px 0 67px'}}>
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* FAQ Section - Phoenix Layout with Kashish Content */}
+      <section className="py-12 lg:py-20 faq-section">
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center mb-2">
-                <img src="/assets/images/section-title-icon.png" alt="caret" className="mr-2" />
-                <span className="sub-heading">FAQ</span>
+              <div className="sub-heading mb-3 lg:mb-4">
+                <span className="text-blue-600 font-semibold text-xs lg:text-sm uppercase tracking-wider">
+                  FAQ
+                </span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{color: '#031031'}}>
+              <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 lg:mb-6 text-slate-900">
                 When should I get a financial advisor?
               </h2>
-              <div className="faq-para">
-                <p style={{color: '#647589'}}>
+              <div className="text-gray-600 leading-relaxed text-sm lg:text-base">
+                <p>
                   See a financial advisor if you require assistance managing your finances. 
                   For someone who has never managed money or invested, a fee-only financial 
                   planner is a good place to start. A meeting like this could be a game-changer 
@@ -807,53 +614,32 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-4"
+              className="space-y-3 lg:space-y-4"
             >
               {faqs.map((faq, index) => (
-                <div key={index} className="card bg-white rounded-lg shadow-md">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="card bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
+                >
                   <details className="group">
-                    <summary className="p-6 cursor-pointer font-semibold hover:text-primary-500 transition-colors flex items-center justify-between" style={{color: '#031031'}}>
-                      {faq.question}
-                      <span className="text-2xl group-open:rotate-45 transition-transform" style={{color: '#00A651'}}>+</span>
+                    <summary className="p-4 lg:p-6 cursor-pointer font-semibold text-slate-900 hover:text-blue-600 transition-colors flex items-center justify-between text-sm lg:text-lg">
+                      <span>{faq.question}</span>
+                      <span className="text-xl lg:text-2xl text-blue-600 group-open:rotate-45 transition-transform">+</span>
                     </summary>
-                    <div className="px-6 pb-6" style={{color: '#647589'}}>
+                    <div className="px-4 lg:px-6 pb-4 lg:pb-6 text-gray-600 leading-relaxed text-sm lg:text-base">
                       {faq.answer}
                     </div>
                   </details>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>
         </div>
       </section>
-
-      {/* Contact Form Section */}
-      {/* <section className="section-padding bg-gray-50" id="contact">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="flex items-center justify-center mb-2">
-              <img src="/assets/images/section-title-icon.png" alt="caret" className="mr-2" />
-              <span className="sub-heading">Get Started</span>
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{color: '#031031'}}>
-              Ready to Start Trading?
-            </h2>
-            <p style={{color: '#647589'}} className="max-w-2xl mx-auto">
-              Book your free trial today and experience our professional trading services
-            </p>
-          </motion.div>
-
-          <div className="max-w-md mx-auto">
-            <LeadForm title="Start Your Free Trial" />
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 };

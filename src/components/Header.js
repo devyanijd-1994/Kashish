@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaChevronDown } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaArrowRight } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
@@ -37,311 +37,168 @@ const Header = () => {
 
   return (
     <>
-      {/* Top Bar */}
-      <div className="top-bar bg-white py-6 hidden lg:block" style={{borderBottom: '1px solid rgba(100, 117, 137, 0.2)'}}>
+      {/* Phoenix Capital Style Top Bar */}
+      {/* <div className="bg-slate-900 text-white py-2 lg:py-3 hidden lg:block">
         <div className="container-custom">
-          <div className="flex justify-between items-center">
-            <div className="phone flex items-center">
-              <div className="icon mr-3">
-                <img src="/assets/images/phone.png" alt="phone" className="w-10 h-10" />
-              </div>
-              <div className="text">
-                <p style={{color: '#647589', fontSize: '14px', margin: 0}}>Requesting a call</p>
-                <span className="bold font-medium" style={{color: '#031031', fontSize: '14px'}}>(+91 91717 18451)</span>
-              </div>
+          <div className="flex justify-between items-center text-xs lg:text-sm">
+            <div className="flex items-center space-x-4 lg:space-x-6">
+              <span className="text-blue-400 font-semibold text-xs lg:text-sm">SEBI Registration: INH000017240</span>
+              <span className="text-gray-300">Research Analyst: Kashish Joshi</span>
             </div>
-
-            <div className="clock flex items-center">
-              <div className="icon mr-3">
-                <img src="/assets/images/clock.png" alt="clock" className="w-11 h-11" />
+            <div className="flex items-center space-x-3 lg:space-x-4">
+              <span className="text-gray-300 text-xs lg:text-sm">Follow Us:</span>
+              <div className="flex space-x-1 lg:space-x-2">
+                <a href="#" className="w-6 lg:w-8 h-6 lg:h-8 bg-white/10 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors">
+                  <i className="fab fa-facebook-f text-xs"></i>
+                </a>
+                <a href="#" className="w-6 lg:w-8 h-6 lg:h-8 bg-white/10 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors">
+                  <i className="fab fa-twitter text-xs"></i>
+                </a>
+                <a href="#" className="w-6 lg:w-8 h-6 lg:h-8 bg-white/10 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors">
+                  <i className="fab fa-linkedin text-xs"></i>
+                </a>
               </div>
-              <div className="text">
-                <p style={{color: '#647589', fontSize: '14px', margin: 0}}>Sunday - Friday:</p>
-                <span className="bold font-medium" style={{color: '#031031', fontSize: '14px'}}>9am - 7pm</span>
-              </div>
-            </div>
-
-            <div className="envelope flex items-center">
-              <div className="icon mr-3">
-                <img src="/assets/images/envelope.png" alt="envelope" className="w-10 h-10" />
-              </div>
-              <div className="text">
-                <p style={{color: '#647589', fontSize: '14px', margin: 0}}>Contact Us:</p>
-                <span className="bold font-medium" style={{color: '#031031', fontSize: '14px'}}>info@kashishjoshiresearch.com</span>
-              </div>
-            </div>
-
-            <div className="location flex items-center">
-              <div className="icon mr-3">
-                <img src="/assets/images/location.png" alt="location" className="w-10 h-10" />
-              </div>
-              <div className="text">
-                <p style={{color: '#647589', fontSize: '14px', margin: 0}}>Hiran Magri, Udaipur</p>
-                <span className="bold font-medium" style={{color: '#031031', fontSize: '14px'}}>Rajasthan</span>
-              </div>
-            </div>
-
-            <div className="social-icon flex space-x-2">
-              <a href="#" className="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:text-white" style={{backgroundColor: 'transparent', color: '#031031'}} onMouseOver={(e) => {e.target.style.backgroundColor = '#00A651'; e.target.style.color = '#fff'}} onMouseOut={(e) => {e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#031031'}}>
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:text-white" style={{backgroundColor: 'transparent', color: '#031031'}} onMouseOver={(e) => {e.target.style.backgroundColor = '#00A651'; e.target.style.color = '#fff'}} onMouseOut={(e) => {e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#031031'}}>
-                <i className="fab fa-dribbble"></i>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:text-white" style={{backgroundColor: 'transparent', color: '#031031'}} onMouseOver={(e) => {e.target.style.backgroundColor = '#00A651'; e.target.style.color = '#fff'}} onMouseOut={(e) => {e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#031031'}}>
-                <i className="fab fa-linkedin"></i>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:text-white" style={{backgroundColor: 'transparent', color: '#031031'}} onMouseOver={(e) => {e.target.style.backgroundColor = '#00A651'; e.target.style.color = '#fff'}} onMouseOut={(e) => {e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#031031'}}>
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:text-white" style={{backgroundColor: 'transparent', color: '#031031'}} onMouseOver={(e) => {e.target.style.backgroundColor = '#00A651'; e.target.style.color = '#fff'}} onMouseOut={(e) => {e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#031031'}}>
-                <i className="fab fa-pinterest"></i>
-              </a>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {/* Main Header */}
-      <header className="bg-white w-full">
+      {/* Phoenix Capital Style Main Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container-custom">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center py-3 lg:py-4">
             {/* Logo */}
-            <Link to="/" className="site-logo">
-              <img src="/assets/images/logoo2.png" alt="company logo" className="h-16" />
+            <Link to="/" className="flex items-center">
+              <img src="/assets/images/logoo2.png" alt="Kashish Joshi Research" className="h-10 lg:h-12" />
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="main-menu hidden lg:flex items-center" id="mobile-menu">
-              <ul className="flex items-center space-x-8">
-                <li>
-                  <Link
-                    to="/"
-                    className="font-medium transition-colors duration-200 py-10 block text-sm font-semibold"
-                    style={{
-                      color: location.pathname === '/' ? '#00A651' : '#031031',
-                      textTransform: 'capitalize',
-                      fontWeight: '600',
-                      fontSize: '14px',
-                      fontFamily: 'Poppins, sans-serif'
-                    }}
-                    onMouseOver={(e) => e.target.style.color = '#00A651'}
-                    onMouseOut={(e) => e.target.style.color = location.pathname === '/' ? '#00A651' : '#031031'}
-                  >
-                    Home
-                  </Link>
-                </li>
+            {/* Desktop Navigation - Phoenix Style */}
+            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              <Link
+                to="/"
+                className={`font-semibold text-sm transition-colors hover:text-blue-600 ${
+                  location.pathname === '/' ? 'text-blue-600' : 'text-slate-700'
+                }`}
+              >
+                Home
+              </Link>
 
-                <li>
-                  <Link
-                    to="/about"
-                    className="font-medium transition-colors duration-200 py-10 block text-sm font-semibold"
-                    style={{
-                      color: location.pathname === '/about' ? '#00A651' : '#031031',
-                      textTransform: 'capitalize',
-                      fontWeight: '600',
-                      fontSize: '14px',
-                      fontFamily: 'Poppins, sans-serif'
-                    }}
-                    onMouseOver={(e) => e.target.style.color = '#00A651'}
-                    onMouseOut={(e) => e.target.style.color = location.pathname === '/about' ? '#00A651' : '#031031'}
-                  >
-                    About
-                  </Link>
-                </li>
+              <Link
+                to="/about"
+                className={`font-semibold text-sm transition-colors hover:text-blue-600 ${
+                  location.pathname === '/about' ? 'text-blue-600' : 'text-slate-700'
+                }`}
+              >
+                About
+              </Link>
 
-                {/* Services Dropdown */}
-                <li 
-                  className="relative"
-                  onMouseEnter={() => setServicesDropdown(true)}
-                  onMouseLeave={() => setServicesDropdown(false)}
+              {/* Services Dropdown - Phoenix Style */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setServicesDropdown(true)}
+                onMouseLeave={() => setServicesDropdown(false)}
+              >
+                <Link
+                  to="/services"
+                  className={`font-semibold text-sm transition-colors hover:text-blue-600 flex items-center ${
+                    location.pathname.includes('/services') ? 'text-blue-600' : 'text-slate-700'
+                  }`}
                 >
-                  <Link
-                    to="/services"
-                    className="font-medium transition-colors duration-200 py-10 block text-sm font-semibold flex items-center"
-                    style={{
-                      color: location.pathname.includes('/services') ? '#00A651' : '#031031',
-                      textTransform: 'capitalize',
-                      fontWeight: '600',
-                      fontSize: '14px',
-                      fontFamily: 'Poppins, sans-serif'
-                    }}
-                    onMouseOver={(e) => e.target.style.color = '#00A651'}
-                    onMouseOut={(e) => e.target.style.color = location.pathname.includes('/services') ? '#00A651' : '#031031'}
-                  >
-                    Services <FaChevronDown className="ml-1 text-xs" />
-                  </Link>
-                  
-                  {/* Services Dropdown Menu */}
-                  <AnimatePresence>
-                    {servicesDropdown && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-64 z-50"
-                        style={{ marginTop: '0px', border: '1px solid #e5e7eb' }}
-                      >
-                        {servicesItems.map((item, index) => (
-                          <Link
-                            key={index}
-                            to={item.path}
-                            className="block px-4 py-3 text-sm transition-colors duration-200 hover:bg-gray-50"
-                            style={{
-                              color: '#031031',
-                              fontFamily: 'Poppins, sans-serif',
-                              textDecoration: 'none'
-                            }}
-                            onMouseOver={(e) => {
-                              e.target.style.color = '#00A651';
-                              e.target.style.backgroundColor = '#f9fafb';
-                            }}
-                            onMouseOut={(e) => {
-                              e.target.style.color = '#031031';
-                              e.target.style.backgroundColor = 'transparent';
-                            }}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </li>
+                  Services <FaChevronDown className="ml-1 text-xs" />
+                </Link>
+                
+                <AnimatePresence>
+                  {servicesDropdown && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 bg-white shadow-xl rounded-xl py-4 min-w-72 z-50 border border-gray-100"
+                      style={{ marginTop: '8px' }}
+                    >
+                      {servicesItems.map((item, index) => (
+                        <Link
+                          key={index}
+                          to={item.path}
+                          className="block px-6 py-3 text-sm text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-                {/* Member Zone Dropdown */}
-                <li 
-                  className="relative"
-                  onMouseEnter={() => setMemberZoneDropdown(true)}
-                  onMouseLeave={() => setMemberZoneDropdown(false)}
-                >
-                  <span
-                    className="font-medium transition-colors duration-200 py-10 block text-sm font-semibold flex items-center cursor-pointer"
-                    style={{
-                      color: '#031031',
-                      textTransform: 'capitalize',
-                      fontWeight: '600',
-                      fontSize: '14px',
-                      fontFamily: 'Poppins, sans-serif'
-                    }}
-                    onMouseOver={(e) => e.target.style.color = '#00A651'}
-                    onMouseOut={(e) => e.target.style.color = '#031031'}
-                  >
-                    Member Zone <FaChevronDown className="ml-1 text-xs" />
-                  </span>
-                  
-                  {/* Member Zone Dropdown Menu */}
-                  <AnimatePresence>
-                    {memberZoneDropdown && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-56 z-50"
-                        style={{ marginTop: '0px', border: '1px solid #e5e7eb' }}
-                      >
-                        {memberZoneItems.map((item, index) => (
-                          <Link
-                            key={index}
-                            to={item.path}
-                            className="block px-4 py-3 text-sm transition-colors duration-200 hover:bg-gray-50"
-                            style={{
-                              color: '#031031',
-                              fontFamily: 'Poppins, sans-serif',
-                              textDecoration: 'none'
-                            }}
-                            onMouseOver={(e) => {
-                              e.target.style.color = '#00A651';
-                              e.target.style.backgroundColor = '#f9fafb';
-                            }}
-                            onMouseOut={(e) => {
-                              e.target.style.color = '#031031';
-                              e.target.style.backgroundColor = 'transparent';
-                            }}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </li>
+              {/* Member Zone Dropdown - Phoenix Style */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setMemberZoneDropdown(true)}
+                onMouseLeave={() => setMemberZoneDropdown(false)}
+              >
+                <span className="font-semibold text-sm text-slate-700 hover:text-blue-600 transition-colors flex items-center cursor-pointer">
+                  Legal <FaChevronDown className="ml-1 text-xs" />
+                </span>
+                
+                <AnimatePresence>
+                  {memberZoneDropdown && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 bg-white shadow-xl rounded-xl py-4 min-w-64 z-50 border border-gray-100"
+                      style={{ marginTop: '8px' }}
+                    >
+                      {memberZoneItems.map((item, index) => (
+                        <Link
+                          key={index}
+                          to={item.path}
+                          className="block px-6 py-3 text-sm text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-                <li>
-                  <Link
-                    to="/blogs"
-                    className="font-medium transition-colors duration-200 py-10 block text-sm font-semibold"
-                    style={{
-                      color: location.pathname === '/blogs' ? '#00A651' : '#031031',
-                      textTransform: 'capitalize',
-                      fontWeight: '600',
-                      fontSize: '14px',
-                      fontFamily: 'Poppins, sans-serif'
-                    }}
-                    onMouseOver={(e) => e.target.style.color = '#00A651'}
-                    onMouseOut={(e) => e.target.style.color = location.pathname === '/blogs' ? '#00A651' : '#031031'}
-                  >
-                    Blogs
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to="/contact"
-                    className="font-medium transition-colors duration-200 py-10 block text-sm font-semibold"
-                    style={{
-                      color: location.pathname === '/contact' ? '#00A651' : '#031031',
-                      textTransform: 'capitalize',
-                      fontWeight: '600',
-                      fontSize: '14px',
-                      fontFamily: 'Poppins, sans-serif'
-                    }}
-                    onMouseOver={(e) => e.target.style.color = '#00A651'}
-                    onMouseOut={(e) => e.target.style.color = location.pathname === '/contact' ? '#00A651' : '#031031'}
-                  >
-                    Contact
-                  </Link>
-                </li>
-
-                <li className="button header-cta">
-                  <a
-                    href="https://wa.link/iw4ct4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      background: '#00A651',
-                      color: '#ffffff',
-                      fontWeight: '600',
-                      padding: '17px 25px',
-                      borderRadius: '8px',
-                      transition: 'all 0.3s ease',
-                      display: 'inline-block',
-                      textTransform: 'capitalize',
-                      fontFamily: 'Poppins, sans-serif',
-                      textDecoration: 'none'
-                    }}
-                    onMouseOver={(e) => e.target.style.background = '#0058bd'}
-                    onMouseOut={(e) => e.target.style.background = '#00A651'}
-                  >
-                    <span>WhatsApp Now <i className="fas fa-arrow-right ml-1"></i></span>
-                  </a>
-                </li>
-              </ul>
+              <Link
+                to="/contact"
+                className={`font-semibold text-sm transition-colors hover:text-blue-600 ${
+                  location.pathname === '/contact' ? 'text-blue-600' : 'text-slate-700'
+                }`}
+              >
+                Contact
+              </Link>
             </nav>
+
+            {/* Phoenix Style CTA Buttons */}
+            <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
+              <a
+                href="https://wa.link/iw4ct4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-105 flex items-center"
+              >
+                Get Started
+                <FaArrowRight className="ml-2 text-xs" />
+              </a>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             >
-              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              {isMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Phoenix Style */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -350,15 +207,13 @@ const Header = () => {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden bg-white border-t border-gray-200"
             >
-              <div className="container-custom py-4">
+              <div className="container-custom py-6">
                 <nav className="flex flex-col space-y-4">
                   <Link
                     to="/"
                     onClick={closeMenu}
-                    className={`font-medium py-2 transition-colors duration-200 ${
-                      location.pathname === '/'
-                        ? 'text-primary-600'
-                        : 'text-gray-700 hover:text-primary-600'
+                    className={`font-semibold py-3 transition-colors ${
+                      location.pathname === '/' ? 'text-blue-600' : 'text-slate-700 hover:text-blue-600'
                     }`}
                   >
                     Home
@@ -366,10 +221,8 @@ const Header = () => {
                   <Link
                     to="/about"
                     onClick={closeMenu}
-                    className={`font-medium py-2 transition-colors duration-200 ${
-                      location.pathname === '/about'
-                        ? 'text-primary-600'
-                        : 'text-gray-700 hover:text-primary-600'
+                    className={`font-semibold py-3 transition-colors ${
+                      location.pathname === '/about' ? 'text-blue-600' : 'text-slate-700 hover:text-blue-600'
                     }`}
                   >
                     About
@@ -377,14 +230,14 @@ const Header = () => {
                   
                   {/* Mobile Services Menu */}
                   <div>
-                    <span className="font-medium py-2 text-gray-700 block">Services</span>
+                    <span className="font-semibold py-3 text-slate-700 block">Services</span>
                     <div className="pl-4 space-y-2">
                       {servicesItems.map((item, index) => (
                         <Link
                           key={index}
                           to={item.path}
                           onClick={closeMenu}
-                          className="block py-1 text-sm text-gray-600 hover:text-primary-600"
+                          className="block py-2 text-sm text-slate-600 hover:text-blue-600 font-medium"
                         >
                           {item.name}
                         </Link>
@@ -392,16 +245,16 @@ const Header = () => {
                     </div>
                   </div>
 
-                  {/* Mobile Member Zone Menu */}
+                  {/* Mobile Legal Menu */}
                   <div>
-                    <span className="font-medium py-2 text-gray-700 block">Member Zone</span>
+                    <span className="font-semibold py-3 text-slate-700 block">Legal</span>
                     <div className="pl-4 space-y-2">
                       {memberZoneItems.map((item, index) => (
                         <Link
                           key={index}
                           to={item.path}
                           onClick={closeMenu}
-                          className="block py-1 text-sm text-gray-600 hover:text-primary-600"
+                          className="block py-2 text-sm text-slate-600 hover:text-blue-600 font-medium"
                         >
                           {item.name}
                         </Link>
@@ -410,36 +263,26 @@ const Header = () => {
                   </div>
 
                   <Link
-                    to="/blogs"
-                    onClick={closeMenu}
-                    className={`font-medium py-2 transition-colors duration-200 ${
-                      location.pathname === '/blogs'
-                        ? 'text-primary-600'
-                        : 'text-gray-700 hover:text-primary-600'
-                    }`}
-                  >
-                    Blogs
-                  </Link>
-                  <Link
                     to="/contact"
                     onClick={closeMenu}
-                    className={`font-medium py-2 transition-colors duration-200 ${
-                      location.pathname === '/contact'
-                        ? 'text-primary-600'
-                        : 'text-gray-700 hover:text-primary-600'
+                    className={`font-semibold py-3 transition-colors ${
+                      location.pathname === '/contact' ? 'text-blue-600' : 'text-slate-700 hover:text-blue-600'
                     }`}
                   >
                     Contact
                   </Link>
-                  <a
-                    href="https://wa.link/iw4ct4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-block text-center mt-4"
-                    onClick={closeMenu}
-                  >
-                    WhatsApp Now
-                  </a>
+                  
+                  <div className="pt-4 space-y-3">
+                    <a
+                      href="https://wa.link/iw4ct4"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-semibold"
+                      onClick={closeMenu}
+                    >
+                      Get Started
+                    </a>
+                  </div>
                 </nav>
               </div>
             </motion.div>

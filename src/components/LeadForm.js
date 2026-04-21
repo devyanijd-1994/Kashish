@@ -50,7 +50,7 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`hero-form bg-white rounded-xl shadow-xl max-w-sm p-4 lg:p-6 ${className}`}
+      className={`hero-form bg-white rounded-lg lg:rounded-xl shadow-xl w-full max-w-sm mx-auto p-3 lg:p-6 ${className}`}
       style={{
         background: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '10px',
@@ -58,7 +58,7 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
         marginTop: '20px'
       }}
     >
-      <h4 className="text-2xl font-bold mb-6 text-center" style={{color: '#031031', fontSize: '1.5em', marginBottom: '15px'}}>
+      <h4 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-6 text-center" style={{color: '#031031', fontSize: '1.25em', marginBottom: '15px'}}>
         {title}
       </h4>
       
@@ -75,7 +75,7 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
         </p>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3 lg:space-y-4">
         <div className="form-group">
           <input
             type="text"
@@ -84,7 +84,7 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
             onChange={handleChange}
             placeholder="Your Name"
             required
-            className="form-control w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200"
+            className="form-control w-full px-3 lg:px-4 py-2 lg:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200 text-sm lg:text-base"
             style={{
               marginBottom: '10px',
               color: '#000 !important',
@@ -106,7 +106,7 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
             title="Please enter exactly 10 digits without any spaces or special characters."
             inputMode="numeric"
             required
-            className="form-control w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200"
+            className="form-control w-full px-3 lg:px-4 py-2 lg:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200 text-sm lg:text-base"
             style={{
               marginBottom: '10px',
               color: '#000 !important',
@@ -125,7 +125,7 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             title="Please enter a valid email address."
             required
-            className="form-control w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200"
+            className="form-control w-full px-3 lg:px-4 py-2 lg:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200 text-sm lg:text-base"
             style={{
               marginBottom: '10px',
               color: '#000 !important',
@@ -140,7 +140,7 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
             value={formData.segment}
             onChange={handleChange}
             required
-            className="form-control w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200"
+            className="form-control w-full px-3 lg:px-4 py-2 lg:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200 text-sm lg:text-base"
             style={{
               marginBottom: '10px',
               color: '#000',
@@ -157,14 +157,14 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="button header-cta w-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
+          className="button header-cta w-full text-center disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base"
           style={{
             width: '100%',
             textAlign: 'center',
-            background: '#00A651',
+            background: '#1e40af',
             color: '#ffffff',
             fontWeight: '600',
-            padding: '17px 25px',
+            padding: '14px 20px',
             borderRadius: '8px',
             transition: 'all 0.3s ease',
             display: 'inline-block',
@@ -173,8 +173,8 @@ const LeadForm = ({ title = "Book Your Free Trial", className = "" }) => {
             border: 'none',
             cursor: 'pointer'
           }}
-          onMouseOver={(e) => e.target.style.background = '#0058bd'}
-          onMouseOut={(e) => e.target.style.background = '#00A651'}
+          onMouseOver={(e) => e.target.style.background = '#1e3a8a'}
+          onMouseOut={(e) => e.target.style.background = '#1e40af'}
         >
           {isSubmitting ? (
             <div className="flex items-center justify-center">

@@ -2,7 +2,1115 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Phoenix Capital Research Style Variables */
+:root {
+  --phoenix-primary: #1e40af;        /* Blue 700 - Primary brand color */
+  --phoenix-secondary: #3b82f6;      /* Blue 500 - Secondary brand color */
+  --phoenix-accent: #60a5fa;         /* Blue 400 - Accent color */
+  --phoenix-dark: #1e293b;           /* Slate 800 - Dark text */
+  --phoenix-text: #334155;           /* Slate 700 - Body text */
+  --phoenix-light-text: #64748b;     /* Slate 500 - Light text */
+  --phoenix-white: #ffffff;          /* Pure white */
+  --phoenix-light-bg: #f8fafc;       /* Slate 50 - Light background */
+  --phoenix-border: #e2e8f0;         /* Slate 200 - Borders */
+  
+  /* Green ONLY for money/amounts */
+  --phoenix-money: #16a34a;          /* Green 600 - Money amounts */
+  --phoenix-money-light: #22c55e;    /* Green 500 - Light money */
+  --phoenix-money-dark: #15803d;     /* Green 700 - Dark money */
+  
+  /* Shadows */
+  --phoenix-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --phoenix-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --phoenix-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Phoenix Capital Typography Overrides */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--phoenix-text);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: var(--phoenix-dark);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
+p {
+  font-family: 'Inter', sans-serif;
+  color: var(--phoenix-light-text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* Phoenix Capital Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--phoenix-primary) 0%, var(--phoenix-secondary) 100%);
+  color: var(--phoenix-white);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--phoenix-shadow);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--phoenix-dark) 0%, var(--phoenix-primary) 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--phoenix-shadow-lg);
+  color: var(--phoenix-white);
+}
+
+.btn-secondary {
+  background: var(--phoenix-white);
+  color: var(--phoenix-primary);
+  border: 2px solid var(--phoenix-primary);
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--phoenix-primary);
+  color: var(--phoenix-white);
+  transform: translateY(-2px);
+  box-shadow: var(--phoenix-shadow-lg);
+}
+
+/* Money/Amount Styles - GREEN ONLY */
+.money-amount,
+.price,
+.percentage,
+.profit,
+.amount {
+  color: var(--phoenix-money) !important;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+.money-bg {
+  background-color: var(--phoenix-money) !important;
+}
+
+.money-border {
+  border-color: var(--phoenix-money) !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--phoenix-shadow-lg);
+  background: linear-gradient(135deg, #1d4ed8 0%, var(--phoenix-primary) 100%);
+  color: var(--phoenix-white);
+}
+
+.btn-secondary {
+  background: var(--phoenix-white);
+  color: var(--phoenix-primary);
+  border: 2px solid var(--phoenix-primary);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--phoenix-primary);
+  color: var(--phoenix-white);
+  transform: translateY(-2px);
+  box-shadow: var(--phoenix-shadow-lg);
+}
+
+/* Phoenix Capital Hero Section */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Background image container with enhanced visibility */
+.hero-section .absolute.inset-0.bg-cover {
+  transition: all 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(30, 64, 175, 0.15) 0%, transparent 50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-section h1 {
+  color: var(--phoenix-white);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero-section p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Auto-slideshow background transition */
+.hero-section .absolute.inset-0.bg-cover {
+  transition: all 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced background transition with zoom effect */
+.hero-section .absolute.inset-0 {
+  animation: subtle-zoom 4s ease-in-out infinite alternate;
+}
+
+/* Hero slider controls z-index override */
+.hero-section .hero-slider-arrow {
+  z-index: 25 !important;
+}
+
+/* Hero slide indicators z-index */
+.hero-section .absolute.bottom-8 {
+  z-index: 25 !important;
+}
+
+/* Hero progress bar z-index */
+.hero-section .absolute.bottom-0 {
+  z-index: 25 !important;
+}
+
+/* Hero slide counter z-index */
+.hero-section .absolute.top-8.right-8 {
+  z-index: 25 !important;
+}
+
+@keyframes subtle-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+/* Pause animation on hover */
+.hero-section:hover .absolute.inset-0 {
+  animation-play-state: paused;
+}
+
+/* Slide indicators */
+.hero-section .slide-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 20;
+}
+
+.hero-section .slide-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.hero-section .slide-indicator.active {
+  background: white;
+  transform: scale(1.25);
+}
+
+.hero-section .slide-indicator:hover {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* Phoenix Capital Service Cards */
+.offer-wrapper {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 
+    0 10px 25px -5px rgba(30, 64, 175, 0.1),
+    0 4px 6px -2px rgba(30, 64, 175, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(30, 64, 175, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.offer-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.offer-wrapper:hover::before {
+  transform: scaleX(1);
+}
+
+.offer-wrapper:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 25px 50px -12px rgba(30, 64, 175, 0.25),
+    0 10px 20px -5px rgba(30, 64, 175, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: rgba(30, 64, 175, 0.2);
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+}
+
+.offer-wrapper h5 {
+  color: var(--phoenix-dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.offer-wrapper p {
+  color: var(--phoenix-light-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.offer-wrapper a {
+  color: var(--phoenix-primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.offer-wrapper a:hover {
+  color: var(--phoenix-secondary);
+  text-decoration: underline;
+}
+
+/* Phoenix Capital Service Icons */
+.service-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: var(--phoenix-white);
+  font-size: 1.75rem;
+  box-shadow: 
+    0 8px 16px -4px rgba(30, 64, 175, 0.3),
+    0 4px 8px -2px rgba(30, 64, 175, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.offer-wrapper:hover .service-icon::before {
+  animation: shimmer 1.5s ease-in-out;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+}
+
+.offer-wrapper:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 
+    0 12px 24px -6px rgba(30, 64, 175, 0.4),
+    0 6px 12px -3px rgba(30, 64, 175, 0.3);
+}
+
+/* Phoenix Capital Header Styles */
+.top-bar {
+  background: var(--phoenix-dark);
+  color: var(--phoenix-white);
+}
+
+/* Phoenix Capital Testimonials */
+.testimonial-wrapper {
+  background: var(--phoenix-white);
+  border-radius: 12px;
+  box-shadow: var(--phoenix-shadow);
+  border: 1px solid var(--phoenix-border);
+  transition: all 0.3s ease;
+}
+
+.testimonial-wrapper:hover {
+  box-shadow: var(--phoenix-shadow-lg);
+  transform: translateY(-4px);
+}
+
+/* Phoenix Capital FAQ Cards */
+.card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(30, 64, 175, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 
+    0 8px 20px -6px rgba(30, 64, 175, 0.1),
+    0 4px 8px -2px rgba(30, 64, 175, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.03), transparent);
+  transition: left 0.6s ease;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover {
+  box-shadow: 
+    0 20px 40px -10px rgba(30, 64, 175, 0.15),
+    0 8px 16px -4px rgba(30, 64, 175, 0.1);
+  border-color: rgba(30, 64, 175, 0.15);
+  transform: translateY(-4px);
+}
+
+.card summary {
+  background: var(--phoenix-white);
+  color: var(--phoenix-dark);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.card summary:hover {
+  background: var(--phoenix-light-bg);
+  color: var(--phoenix-primary);
+}
+
+/* Phoenix Capital Form Elements */
+input, textarea, select {
+  font-family: 'Inter', sans-serif;
+  border: 2px solid var(--phoenix-border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--phoenix-white);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--phoenix-primary);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  outline: none;
+}
+
+/* Phoenix Capital Slider Arrows */
+.hero-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--phoenix-white);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.hero-slider-arrow:hover {
+  background: var(--phoenix-white);
+  color: var(--phoenix-primary);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--phoenix-shadow-lg);
+}
+
+/* Phoenix Capital Responsive Design */
+@media (max-width: 1200px) {
+  .container-custom {
+    max-width: 1140px;
+    padding: 0 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .container-custom {
+    max-width: 960px;
+    padding: 0 20px;
+  }
+  
+  .hero-section {
+    min-height: 80vh;
+    padding: 60px 0;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.75rem;
+    line-height: 1.2;
+  }
+  
+  .hero-section p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Hero slider arrows repositioning for tablets */
+  .hero-slider-arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+  }
+  
+  /* Services grid responsive */
+  .offer-wrapper {
+    padding: 2rem 1.5rem;
+  }
+  
+  /* Testimonials responsive */
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-custom {
+    max-width: 720px;
+    padding: 0 15px;
+  }
+  
+  .hero-section {
+    min-height: 70vh;
+    padding: 40px 0;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.25rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-section p {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Hero slider controls for mobile */
+  .hero-slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .hero-slider-arrow[style*="right: 6%"] {
+    right: 60px !important;
+  }
+  
+  .hero-slider-arrow[style*="right: 2%"] {
+    right: 15px !important;
+  }
+  
+  .hero-slider-arrow[style*="right: 10%"] {
+    right: 105px !important;
+  }
+  
+  /* Slide indicators mobile */
+  .hero-section .absolute.bottom-8 {
+    bottom: 20px;
+  }
+  
+  /* Progress bar mobile */
+  .hero-section .absolute.bottom-0 {
+    height: 2px;
+  }
+  
+  /* Slide counter mobile */
+  .hero-section .absolute.top-8.right-8 {
+    top: 15px;
+    right: 15px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .offer-wrapper {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  
+  .service-icon {
+    margin: 0 auto 1rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* About section mobile */
+  .about-section .grid {
+    gap: 2rem;
+  }
+  
+  /* CTA section mobile */
+  .cta-section {
+    padding: 3rem 0;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* FAQ section mobile */
+  .faq-section .grid {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-custom {
+    padding: 0 12px;
+  }
+  
+  .hero-section {
+    min-height: 60vh;
+    padding: 30px 0;
+  }
+  
+  .hero-section h1 {
+    font-size: 1.875rem;
+    line-height: 1.4;
+  }
+  
+  .hero-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  /* Hero form mobile */
+  .hero-form {
+    margin-top: 2rem;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  /* Button responsive */
+  .btn-primary {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Hero slider mobile adjustments */
+  .hero-slider-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+  
+  .hero-slider-arrow[style*="right: 6%"] {
+    right: 50px !important;
+  }
+  
+  .hero-slider-arrow[style*="right: 2%"] {
+    right: 10px !important;
+  }
+  
+  .hero-slider-arrow[style*="right: 10%"] {
+    right: 90px !important;
+  }
+  
+  /* Services mobile */
+  .offer-wrapper h3 {
+    font-size: 1.125rem;
+  }
+  
+  .offer-wrapper p {
+    font-size: 0.875rem;
+  }
+  
+  /* Testimonials mobile */
+  .testimonial-card {
+    padding: 1rem;
+  }
+  
+  .testimonial-card p {
+    font-size: 0.9rem;
+  }
+  
+  /* Footer mobile */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  /* Newsletter mobile */
+  .newsletter-section .flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .newsletter-section input {
+    width: 100%;
+  }
+  
+  .newsletter-section button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 1.625rem;
+  }
+  
+  .hero-section .grid {
+    gap: 1.5rem;
+  }
+  
+  /* Ultra small mobile adjustments */
+  .hero-slider-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
+  }
+  
+  .hero-slider-arrow[style*="right: 6%"] {
+    right: 45px !important;
+  }
+  
+  .hero-slider-arrow[style*="right: 2%"] {
+    right: 8px !important;
+  }
+  
+  .hero-slider-arrow[style*="right: 10%"] {
+    right: 82px !important;
+  }
+  
+  /* Form mobile */
+  .hero-form {
+    padding: 0.75rem;
+  }
+  
+  .hero-form h4 {
+    font-size: 1.25rem;
+  }
+  
+  .form-control {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Container responsive improvements */
+.container-custom {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@media (min-width: 576px) {
+  .container-custom {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-custom {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-custom {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-custom {
+    max-width: 1320px;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  .hero-slider-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    min-height: 44px;
+    padding: 12px 24px;
+  }
+  
+  .form-control {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-section .absolute.inset-0 {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Print styles */
+@media print {
+  .hero-slider-arrow,
+  .fixed,
+  .sticky {
+    display: none !important;
+  }
+  
+  .hero-section {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+}
+
+/* Footer Contact Icons */
+.footer-contact-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  margin-top: 4px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-contact-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Footer responsive improvements */
+@media (max-width: 576px) {
+  .footer-contact-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-contact-icon {
+    margin: 0 auto 8px;
+  }
+}
+
+/* Phoenix Capital Brand Colors Override */
+.text-brand-primary {
+  color: var(--phoenix-primary) !important;
+}
+
+.text-brand-secondary {
+  color: var(--phoenix-secondary) !important;
+}
+
+.bg-brand-primary {
+  background-color: var(--phoenix-primary) !important;
+}
+
+.bg-brand-secondary {
+  background-color: var(--phoenix-secondary) !important;
+}
+
+.border-brand-primary {
+  border-color: var(--phoenix-primary) !important;
+}
+
+/* Phoenix Capital Typography Enhancements */
+.font-poppins {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Phoenix Capital Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--phoenix-primary) 0%, var(--phoenix-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Phoenix Capital Card Enhancements */
+.phoenix-card {
+  background: var(--phoenix-white);
+  border-radius: 1rem;
+  box-shadow: var(--phoenix-shadow);
+  border: 1px solid var(--phoenix-border);
+  transition: all 0.3s ease;
+}
+
+.phoenix-card:hover {
+  box-shadow: var(--phoenix-shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--phoenix-accent);
+}
+
+/* Phoenix Capital Testimonial Card Effects */
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.02), transparent);
+  transition: left 0.8s ease;
+}
+
+.testimonial-card:hover::before {
+  left: 100%;
+}
+
+/* Phoenix Capital Section Backgrounds */
+.services-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+  position: relative;
+}
+
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(30, 64, 175, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Phoenix Capital FAQ Section */
+.faq-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  position: relative;
+}
+
+.faq-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(30, 64, 175, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Phoenix Capital Button Enhancements */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* Phoenix Capital Floating Elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(30, 64, 175, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(30, 64, 175, 0.5); }
+}
+
+.floating-element {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Phoenix Capital Gradient Overlays */
+.gradient-overlay-blue {
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%);
+}
+
+.gradient-overlay-light {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+}
 
 /* CSS Variables for Landing Page */
 :root {
@@ -11,9 +1119,21 @@
   --light-col: #ffffff;
   --bg-col: #ffffff;
   --wrapper-width: 1260px;
+  
+  /* Phoenix Capital Variables */
+  --phoenix-primary: #1e40af;
+  --phoenix-secondary: #00A651;
+  --phoenix-dark: #0f172a;
+  --phoenix-text: #334155;
+  --phoenix-light-text: #64748b;
+  --phoenix-white: #ffffff;
+  --phoenix-light-bg: #f8fafc;
+  --phoenix-border: #e2e8f0;
+  --phoenix-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --phoenix-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Custom scrollbar - matching original */
+/* Custom scrollbar - Phoenix Capital style */
 ::-webkit-scrollbar {
   width: 15px;
 }
@@ -23,12 +1143,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00A651;
+  background: var(--phoenix-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #008541;
+  background: var(--phoenix-secondary);
 }
 
 /* Landing page scrollbar */
@@ -91,53 +1211,69 @@ html {
   box-shadow: 0 0 0 3px rgba(0, 166, 81, 0.1);
 }
 
-/* Landing page form styles */
+/* Landing page form styles - Phoenix Capital */
 .landing-page .form-control {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Inter', sans-serif;
+  border: 2px solid var(--phoenix-border);
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .landing-page .form-control:focus {
-  box-shadow: 0 0 0 3px rgba(153, 204, 51, 0.1);
-  border-color: var(--main-col);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  border-color: var(--phoenix-primary);
 }
 
-/* Button styles - matching original */
+/* Button styles - Phoenix Capital Style */
 .btn-primary {
-  background: #00A651;
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--phoenix-primary) 0%, #3b82f6 100%);
+  color: var(--phoenix-white);
   font-weight: 600;
-  padding: 17px 25px;
+  padding: 1rem 2rem;
   border-radius: 8px;
   transition: all 0.3s ease;
-  display: inline-block;
-  text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: none;
   font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--phoenix-shadow);
 }
 
 .btn-primary:hover {
-  background: #0058bd;
-  color: #ffffff;
+  background: linear-gradient(135deg, #1d4ed8 0%, var(--phoenix-primary) 100%);
+  color: var(--phoenix-white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 166, 81, 0.3);
+  box-shadow: var(--phoenix-shadow-lg);
+  text-decoration: none;
 }
 
 .btn-secondary {
-  background: #0058bd;
-  color: #ffffff;
+  background: var(--phoenix-white);
+  color: var(--phoenix-primary);
+  border: 2px solid var(--phoenix-primary);
   font-weight: 600;
-  padding: 17px 25px;
+  padding: 1rem 2rem;
   border-radius: 8px;
   transition: all 0.3s ease;
-  display: inline-block;
-  text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: none;
   font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-secondary:hover {
-  background: #004a9f;
-  color: #ffffff;
+  background: var(--phoenix-primary);
+  color: var(--phoenix-white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 88, 189, 0.3);
+  box-shadow: var(--phoenix-shadow-lg);
+  text-decoration: none;
 }
 
 /* Card styles */
@@ -145,71 +1281,109 @@ html {
   @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
 }
 
-/* Gradient text - using original colors */
+/* Gradient text - Phoenix Capital colors */
 .gradient-text {
-  background: linear-gradient(135deg, #00A651 0%, #0058bd 100%);
+  background: linear-gradient(135deg, var(--phoenix-primary) 0%, var(--phoenix-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Hero section with background image */
-.hero-section {
-  position: relative;
-  background-attachment: fixed;
-}
 
-@media (max-width: 768px) {
-  .hero-section {
-    background-attachment: scroll;
-  }
-}
 
-/* Hero text paragraph with white background effect - matching original */
-.hero-text-p::before {
-  position: absolute;
-  width: 62%;
-  height: 35px;
-  background: #fff;
-  content: '';
-  opacity: 0.2;
-  top: 0;
-  left: 0;
-}
-
-/* Hero slider arrows - matching original */
+/* Phoenix Capital Slider Arrows */
 .hero-slider-arrow {
   position: absolute;
-  top: 43%;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 30px;
-  opacity: 1;
-  transition: all 0.3s linear;
-  z-index: 20;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--phoenix-white);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
 }
 
 .hero-slider-arrow:hover {
-  color: #00A651;
+  background: var(--phoenix-white);
+  color: var(--phoenix-primary);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--phoenix-shadow-lg);
 }
 
-/* Services hover effect - matching original */
+/* Services hover effect - Phoenix Capital Style */
 .offer-wrapper {
-  background: #fff;
-  padding: 41px 31px;
-  transition: all 0.3s linear;
+  background: var(--phoenix-white);
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: var(--phoenix-shadow);
+  transition: all 0.3s ease;
+  border: 1px solid var(--phoenix-border);
+  height: 100%;
 }
 
 .offer-wrapper:hover {
-  background: #00A651 !important;
+  transform: translateY(-8px);
+  box-shadow: var(--phoenix-shadow-lg);
+  border-color: var(--phoenix-primary);
+  background: var(--phoenix-white);
 }
 
-.offer-wrapper:hover .service-icon,
-.offer-wrapper:hover h5,
-.offer-wrapper:hover p,
-.offer-wrapper:hover a {
-  color: #fff !important;
+.offer-wrapper:hover .service-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, var(--phoenix-secondary) 0%, #10b981 100%);
+}
+
+.offer-wrapper h5 {
+  color: var(--phoenix-dark) !important;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.offer-wrapper p {
+  color: var(--phoenix-light-text) !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.offer-wrapper a {
+  color: var(--phoenix-primary) !important;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.offer-wrapper a:hover {
+  color: var(--phoenix-secondary) !important;
+  text-decoration: underline;
+}
+
+/* Service Icons - Phoenix Style */
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--phoenix-primary) 0%, #3b82f6 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  color: white !important;
+  font-size: 2rem !important;
 }
 
 /* Testimonials section styling - matching original */
@@ -243,27 +1417,48 @@ html {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Typography - matching original */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
-  color: #031031;
-  margin: 0;
+/* Typography - Phoenix Capital Style */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--phoenix-text);
+  background-color: var(--phoenix-white);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--phoenix-dark);
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 { font-size: 3.5rem; font-weight: 700; }
+h2 { font-size: 2.5rem; font-weight: 600; }
+h3 { font-size: 2rem; font-weight: 600; }
+h4 { font-size: 1.5rem; font-weight: 600; }
+h5 { font-size: 1.25rem; font-weight: 600; }
+h6 { font-size: 1rem; font-weight: 600; }
+
 p {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
-  color: #647589;
+  color: var(--phoenix-light-text);
+  margin-bottom: 1rem;
   line-height: 1.7;
-  margin-bottom: 0;
 }
 
 a {
-  color: #031031;
+  color: var(--phoenix-text);
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--phoenix-primary);
+  text-decoration: none;
 }
 
 /* Sub-heading style - matching original */
@@ -273,18 +1468,18 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Original button hover effects */
+/* Phoenix Capital button hover effects */
 .header-cta:hover {
-  background: #0058bd !important;
+  background: var(--phoenix-primary) !important;
 }
 
-/* Progress bar colors - matching original */
+/* Progress bar colors - Phoenix Capital */
 .progress-bar-bg {
-  background-color: #b3cef6;
+  background-color: var(--phoenix-border);
 }
 
 .progress-bar-fill {
-  background-color: #00A651;
+  background-color: var(--phoenix-secondary);
 }
 
 /* Landing page specific animations */
@@ -473,3 +1668,135 @@ a {
     border-radius: 25px;
   }
 }
+/* Card styles - Phoenix Capital */
+.card {
+  background: var(--phoenix-white);
+  border: 1px solid var(--phoenix-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: var(--phoenix-shadow);
+}
+
+.card:hover {
+  box-shadow: var(--phoenix-shadow-lg);
+  border-color: var(--phoenix-primary);
+  transform: translateY(-2px);
+}
+
+.card summary {
+  background: var(--phoenix-white);
+  color: var(--phoenix-dark);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.card summary:hover {
+  background: var(--phoenix-light-bg);
+  color: var(--phoenix-primary);
+}
+
+/* Form styles - Phoenix Capital */
+input, textarea, select {
+  font-family: 'Inter', sans-serif;
+  border: 2px solid var(--phoenix-border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--phoenix-white);
+  color: var(--phoenix-text);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--phoenix-primary);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  outline: none;
+}
+
+.form-input {
+  font-family: 'Inter', sans-serif;
+  border: 2px solid var(--phoenix-border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--phoenix-white);
+  color: var(--phoenix-text);
+  width: 100%;
+}
+
+.form-input::placeholder {
+  color: var(--phoenix-light-text);
+  font-size: 14px;
+}
+
+.form-input:focus {
+  border-color: var(--phoenix-primary);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  outline: none;
+}
+
+/* Testimonials - Phoenix Capital */
+.testimonial-wrapper {
+  background: var(--phoenix-white);
+  border-radius: 12px;
+  box-shadow: var(--phoenix-shadow);
+  border: 1px solid var(--phoenix-border);
+  transition: all 0.3s ease;
+}
+
+.testimonial-wrapper:hover {
+  box-shadow: var(--phoenix-shadow-lg);
+  transform: translateY(-4px);
+}
+
+/* Sub-heading style - Phoenix Capital */
+.sub-heading {
+  color: var(--phoenix-secondary);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Phoenix Capital Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .offer-wrapper {
+    padding: 2rem 1.5rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Phoenix Capital Utilities */
+.text-phoenix-primary { color: var(--phoenix-primary); }
+.text-phoenix-secondary { color: var(--phoenix-secondary); }
+.text-phoenix-dark { color: var(--phoenix-dark); }
+.text-phoenix-light { color: var(--phoenix-light-text); }
+
+.bg-phoenix-primary { background-color: var(--phoenix-primary); }
+.bg-phoenix-secondary { background-color: var(--phoenix-secondary); }
+.bg-phoenix-light { background-color: var(--phoenix-light-bg); }
+.bg-phoenix-white { background-color: var(--phoenix-white); }
+
+.border-phoenix-primary { border-color: var(--phoenix-primary); }
+.border-phoenix-secondary { border-color: var(--phoenix-secondary); }
+.border-phoenix-border { border-color: var(--phoenix-border); }
+
+.shadow-phoenix { box-shadow: var(--phoenix-shadow); }
+.shadow-phoenix-lg { box-shadow: var(--phoenix-shadow-lg); }
