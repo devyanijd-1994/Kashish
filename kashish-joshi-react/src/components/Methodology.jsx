@@ -416,7 +416,7 @@ export default function Methodology() {
       </div>
       
       {/* Add CSS animations */}
-      <style jsx>{`
+      <style>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;

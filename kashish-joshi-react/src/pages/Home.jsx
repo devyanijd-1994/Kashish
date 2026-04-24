@@ -9,6 +9,7 @@ import TestimonialsFaq from '../components/TestimonialsFaq';
 import ProblemSolution from '../components/ProblemSolution';
 import HomeFooter from '../components/HomeFooter';
 import theme from '../theme';
+import { submitLead } from '../utils/submitLead';
 // import RegisterForm from '../components/RegisterForm';
 // import BlogSection from '../components/BlogSection';
 
@@ -365,7 +366,33 @@ function QualityServices({ isVisible = false }) {
   );
 }
 
-export default function Home() {
+export default function HeroSection() {
+  const [form, setForm] = useState({ name: '', number: '', email: '', investment: '' });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.name || !form.number) { 
+      alert('Please enter Name and Phone.'); 
+      return; 
+    }
+    setLoading(true);
+    try {
+      await submitLead({ 
+        name: form.name, 
+        number: form.number, 
+        email: form.email, 
+        segment: 'Equity',
+        investment: form.investment || ''
+      });
+      window.location.href = '/thankyou';
+    } catch { 
+      alert('Submission failed. Please try again.'); 
+    }
+    finally { 
+      setLoading(false); 
+    }
+  };
   const [openFaq, setOpenFaq] = useState(0);
   const [isHeroVisible, setIsHeroVisible] = useState(false);
   const [isServicesVisible, setIsServicesVisible] = useState(false);
@@ -756,7 +783,7 @@ export default function Home() {
               }}>
                 Quick Inquiry
               </h3>
-              <form onSubmit={e => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <div>
                   <label className="small-text" style={{ 
                     fontWeight: 550, 
@@ -766,7 +793,9 @@ export default function Home() {
                     fontSize: '0.8rem',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                   }}>Your Name *</label>
-                  <input type="text" placeholder="Full name"
+                  <input type="text" placeholder="Full name" required
+                    value={form.name}
+                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                     style={{ 
                       width: '100%', 
                       border: '1px solid rgba(30, 58, 138, 0.08)', 
@@ -789,7 +818,9 @@ export default function Home() {
                     fontSize: '0.8rem',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                   }}>Contact Number *</label>
-                  <input type="tel" placeholder="10-digit mobile"
+                  <input type="tel" placeholder="10-digit mobile" required maxLength={10}
+                    value={form.number}
+                    onChange={e => setForm(f => ({ ...f, number: e.target.value.replace(/\D/, '') }))}
                     style={{ 
                       width: '100%', 
                       border: '1px solid rgba(30, 58, 138, 0.08)', 
@@ -817,6 +848,8 @@ export default function Home() {
                   <input
                     type="email"
                     placeholder="Enter your email"
+                    value={form.email}
+                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                     style={{
                       width: '100%',
                       border: '1px solid rgba(30, 58, 138, 0.08)',
@@ -834,14 +867,14 @@ export default function Home() {
                 <div>
                   <label style={{ fontSize: '0.8rem', fontWeight: 550, color: '#1a1a2e', display: 'block', marginBottom: '0.2rem' }}>Segment *</label>
                   <div style={{ position: 'relative' }}>
-                    <select style={{ width: '100%', border: '1px solid #ddd', borderRadius: '5px', padding: '0.40rem 0.70rem', fontSize: '0.75rem', outline: 'none', color: '#333', appearance: 'none', boxSizing: 'border-box', background: '#fff' }}>
+                    <select value={form.segment} onChange={e => setForm(f => ({ ...f, segment: e.target.value }))} style={{ width: '100%', border: '1px solid #ddd', borderRadius: '5px', padding: '0.40rem 0.70rem', fontSize: '0.75rem', outline: 'none', color: '#333', appearance: 'none', boxSizing: 'border-box', background: '#fff' }}>
                       <option value="">— Select Segment —</option>
-                      <option>Stock Cash</option>
-                      <option>Option</option>
-                      <option>Future</option>
-                      <option>Banknifty / Nifty Options</option>
-                      <option>Banknifty / Nifty Future</option>
-                      <option>Commodity Services</option>
+                      <option value="Stock Cash">Stock Cash</option>
+                      <option value="Option">Option</option>
+                      <option value="Future">Future</option>
+                      <option value="Banknifty / Nifty Options">Banknifty / Nifty Options</option>
+                      <option value="Banknifty / Nifty Future">Banknifty / Nifty Future</option>
+                      <option value="Commodity Services">Commodity Services</option>
                     </select>
                     <span style={{ position: 'absolute', right: '0.65rem', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#555', fontSize: '0.7rem' }}>▼</span>
                   </div>
@@ -849,12 +882,12 @@ export default function Home() {
                 <div>
                   <label style={{ fontSize: '0.8rem', fontWeight: 550, color: '#1a1a2e', display: 'block', marginBottom: '0.2rem' }}>Trading Capital *</label>
                   <div style={{ position: 'relative' }}>
-                    <select style={{ width: '100%', border: '1px solid #ddd', borderRadius: '5px', padding: '0.40rem 0.70rem', fontSize: '0.75rem', outline: 'none', color: '#333', appearance: 'none', boxSizing: 'border-box', background: '#fff' }}>
+                    <select value={form.investment} onChange={e => setForm(f => ({ ...f, investment: e.target.value }))} style={{ width: '100%', border: '1px solid #ddd', borderRadius: '5px', padding: '0.40rem 0.70rem', fontSize: '0.75rem', outline: 'none', color: '#333', appearance: 'none', boxSizing: 'border-box', background: '#fff' }}>
                       <option value="">— Select Trading Capital —</option>
-                      <option>Below ₹1 Lakh</option>
-                      <option>₹1L – ₹5L</option>
-                      <option>₹5L – ₹10L</option>
-                      <option>Above ₹10L</option>
+                      <option value="Below ₹1 Lakh">Below ₹1 Lakh</option>
+                      <option value="₹1L – ₹5L">₹1L – ₹5L</option>
+                      <option value="₹5L – ₹10L">₹5L – ₹10L</option>
+                      <option value="Above ₹10L">Above ₹10L</option>
                     </select>
                     <span style={{ position: 'absolute', right: '0.65rem', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#555', fontSize: '0.7rem' }}>▼</span>
                   </div>
@@ -866,7 +899,7 @@ export default function Home() {
                     <Link to="/terms-condition" style={{ color: '#00A651' }}>Terms</Link>.
                   </span>
                 </label>
-                <button type="submit" className="btn-primary"
+                <button type="submit" className="btn-primary" disabled={loading}
                   style={{ 
                     background: 'linear-gradient(135deg, #22c55e, #15803d)', 
                     color: '#ffffff', 
@@ -874,14 +907,15 @@ export default function Home() {
                     padding: '0.8rem', 
                     borderRadius: '8px', 
                     border: 'none', 
-                    cursor: 'pointer', 
+                    cursor: loading ? 'not-allowed' : 'pointer', 
                     fontSize: '0.85rem', 
                     letterSpacing: '0.1em',
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     width: '100%',
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    opacity: loading ? 0.7 : 1
                   }}>
-                  SUBMIT
+                  {loading ? 'SUBMITTING...' : 'SUBMIT'}
                 </button>
               </form>
             </div>
