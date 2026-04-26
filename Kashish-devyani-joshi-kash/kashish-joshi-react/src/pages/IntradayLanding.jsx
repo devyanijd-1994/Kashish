@@ -300,7 +300,7 @@ function HeroSection() {
                 boxShadow: '0 4px 15px rgba(34, 197, 94, 0.3)',
                 fontFamily: 'system-ui, -apple-system, sans-serif'
               }}>
-                Trusted SEBI Registered Investment Advisory Firm | INH000022446
+                Trusted SEBI Registered Investment Advisory Firm | INH000017240
               </div>
               <h1 style={{ 
                 color: '#ffffff', 

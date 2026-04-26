@@ -5,8 +5,8 @@ const MSG = "Investing and trading in the securities market are subject to marke
 function TickerBar({ fixed, paused, onToggle }) {
   return (
     <div 
-    style={{ backgroundColor: '#193366ff' }}
-    className={`${fixed ? 'fixed bottom-0 left-0 right-0 z-50' : 'relative z-10'} bg-[#031031] border-t-2 border-[#00A651] overflow-hidden py-2`}>
+    style={{ backgroundColor: '#193366ff', ...(fixed ? { position: 'fixed', bottom: '0', left: 0, right: 0, zIndex: 50 } : {}) }}
+    className={`${fixed ? '' : 'relative z-10'} bg-[#031031] border-t-2 border-[#00A651] overflow-hidden py-2`}>
       <div className="flex items-center gap-3">
         {/* Green dot + label */}
         <div className="flex items-center gap-2 shrink-0 ml-4">

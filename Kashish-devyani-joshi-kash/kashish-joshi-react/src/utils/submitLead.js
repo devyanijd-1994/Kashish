@@ -2,8 +2,8 @@
 // In prod: deploy on same domain or configure CORS on server
 const IS_DEV = import.meta.env.DEV;
 
-const HOME_URL = IS_DEV ? '/api/home' : 'https://kashishweb.questdigiflex.in/home.php';
-const INHOME_URL = IS_DEV ? '/api/home' : 'https://kashishweb.questdigiflex.in/home.php';
+const HOME_URL = IS_DEV ? '/api/home' : 'https://kashishweb.questdigiflex.in/home.php/';
+const INHOME_URL = IS_DEV ? '/api/home' : 'https://kashishweb.questdigiflex.in/home.php/';
 
 // Bearer token for API authentication
 const BEARER_TOKEN = 'KashishWeb@2024#SecureToken';

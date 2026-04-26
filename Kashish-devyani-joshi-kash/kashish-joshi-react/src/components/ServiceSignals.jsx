@@ -107,7 +107,7 @@ function SignalCard({ card, index, isVisible }) {
         opacity: isVisible ? 1 : 0,
         transition: `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.15}s`,
         fontFamily: 'var(--font-family)',
-        height: '480px',
+        height: 'auto',
         minHeight: '480px'
       }}
       onMouseEnter={(e) => {
@@ -143,7 +143,7 @@ function SignalCard({ card, index, isVisible }) {
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
-        gap: '20px',
+        gap: '12px',
         border: `1px solid ${candleColor}30`,
         borderBottom: 'none',
         position: 'relative',
@@ -337,12 +337,12 @@ function SignalCard({ card, index, isVisible }) {
               { label: 'SUPPORT', val: '24/7', icon: '🛡️' }
             ];
             
-            return currentStats;
+            return currentStats.slice(0, 2);
           })().map((stat, i) => (
             <div key={i} style={{
               background: '#ffffff',
               borderRadius: '8px',
-              padding: '10px 6px',
+              padding: '10px 8px',
               textAlign: 'center',
               border: '1px solid #e2e8f0',
               transition: 'all 0.3s ease',
@@ -352,7 +352,8 @@ function SignalCard({ card, index, isVisible }) {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: '70px'
+              minHeight: '76px',
+              gap: '2px'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = '#f8fafc';
@@ -366,22 +367,17 @@ function SignalCard({ card, index, isVisible }) {
             }}
             >
               <div style={{ 
-                fontSize: '14px', 
-                marginBottom: '3px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                fontSize: '14px',
+                lineHeight: 1
               }}>{stat.icon}</div>
               <div style={{
                 fontSize: '12px',
                 fontWeight: 700,
                 color: '#1f2937',
-                marginBottom: '1px',
                 fontFamily: 'var(--font-family)',
                 textAlign: 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                lineHeight: 1.2,
+                whiteSpace: 'nowrap'
               }}>
                 {stat.val}
               </div>
@@ -390,11 +386,10 @@ function SignalCard({ card, index, isVisible }) {
                 color: '#6b7280',
                 fontWeight: 600,
                 textTransform: 'uppercase',
-                letterSpacing: '0.05em',
+                letterSpacing: '0.04em',
                 textAlign: 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                lineHeight: 1.2,
+                whiteSpace: 'nowrap'
               }}>
                 {stat.label}
               </div>
@@ -429,16 +424,19 @@ function SignalCard({ card, index, isVisible }) {
           boxShadow: `0 4px 12px ${candleColor}20`
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = candleColor;
+          const hoverColor = isGreen ? '#1e3a8a' : '#22c55e';
+          e.currentTarget.style.background = hoverColor;
           e.currentTarget.style.color = 'white';
           e.currentTarget.style.transform = 'translateY(-2px)';
-          e.currentTarget.style.boxShadow = `0 8px 24px ${candleColor}40`;
+          e.currentTarget.style.boxShadow = `0 8px 24px ${hoverColor}50`;
+          e.currentTarget.style.borderColor = 'transparent';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
           e.currentTarget.style.color = candleColor;
           e.currentTarget.style.transform = 'translateY(0)';
           e.currentTarget.style.boxShadow = `0 4px 12px ${candleColor}20`;
+          e.currentTarget.style.borderColor = `${candleColor}30`;
         }}
         >
           <i className="fas fa-rocket"></i>
@@ -647,11 +645,9 @@ export default function ServiceSignals() {
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: 'var(--spacing-xs)', 
-                background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(34, 197, 94, 0.1))',
-                border: '2px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(135deg, var(--primary-navy), var(--primary-green))',
-                backgroundOrigin: 'border-box',
-                backgroundClip: 'content-box, border-box',
+                background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.12), rgba(34, 197, 94, 0.12))',
+                border: '2px solid',
+                borderColor: 'rgba(34, 197, 94, 0.4)',
                 borderRadius: '20px', 
                 padding: 'var(--spacing-xs) var(--spacing-lg)', 
                 backdropFilter: 'blur(10px)',
@@ -855,7 +851,7 @@ export default function ServiceSignals() {
           {/* Cards grid */}
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', 
             gap: 'var(--spacing-xl)'
           }}>
             {CARDS.map((card, i) => (

@@ -140,7 +140,7 @@ function STPCard({ plan, index, isVisible }) {
         opacity: isVisible ? 1 : 0,
         transition: `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.15}s`,
         fontFamily: 'var(--font-family)',
-        height: '600px',
+        height: 'auto',
         minHeight: '600px'
       }}
       onMouseEnter={(e) => {
@@ -399,16 +399,19 @@ function STPCard({ plan, index, isVisible }) {
           flex: 1
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = cardColor;
+          const hoverColor = isGreen ? '#1e3a8a' : '#22c55e';
+          e.currentTarget.style.background = hoverColor;
           e.currentTarget.style.color = 'white';
           e.currentTarget.style.transform = 'translateY(-2px)';
-          e.currentTarget.style.boxShadow = `0 8px 24px ${cardColor}40`;
+          e.currentTarget.style.boxShadow = `0 8px 24px ${hoverColor}50`;
+          e.currentTarget.style.borderColor = 'transparent';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
           e.currentTarget.style.color = cardColor;
           e.currentTarget.style.transform = 'translateY(0)';
           e.currentTarget.style.boxShadow = `0 4px 12px ${cardColor}20`;
+          e.currentTarget.style.borderColor = `${cardColor}30`;
         }}
         >
           <i className="fas fa-info-circle"></i>
@@ -539,11 +542,9 @@ export default function STPSignalPlans() {
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: 'var(--spacing-xs)', 
-                background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(34, 197, 94, 0.1))',
-                border: '2px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(135deg, var(--primary-navy), var(--primary-green))',
-                backgroundOrigin: 'border-box',
-                backgroundClip: 'content-box, border-box',
+                background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.12), rgba(34, 197, 94, 0.12))',
+                border: '2px solid',
+                borderColor: 'rgba(34, 197, 94, 0.4)',
                 borderRadius: '20px', 
                 padding: 'var(--spacing-xs) var(--spacing-lg)', 
                 backdropFilter: 'blur(10px)',
@@ -698,7 +699,7 @@ export default function STPSignalPlans() {
           {/* STP Plans Grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
             gap: 'var(--spacing-xl)',
             maxWidth: '1400px',
             margin: '0 auto'

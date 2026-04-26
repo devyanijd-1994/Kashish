@@ -235,7 +235,7 @@ export default function About() {
                 letterSpacing: '0.01em',
                 transition: 'var(--transition-normal)'
               }}>
-                <i className="fas fa-phone-alt" style={{ marginRight: 'var(--spacing-xs)' }}></i>
+                <i className="fas fa-phone" style={{ marginRight: 'var(--spacing-xs)' }}></i>
                 Get Started Today
               </Link>
               <Link to="/services" className="btn-secondary" style={{
@@ -296,7 +296,7 @@ export default function About() {
             {/* Left: About Us Content */}
             <div style={{ 
               flex: '1', 
-              minWidth: '500px',
+              minWidth: 'min(500px, 100%)',
               transform: isVisible ? 'translateX(0)' : 'translateX(-50px)',
               opacity: isVisible ? 1 : 0,
               transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
@@ -1053,7 +1053,7 @@ export default function About() {
                 alignItems: 'center',
                 gap: 'var(--spacing-xs)'
               }}>
-                <i className="fas fa-phone-alt"></i>
+                <i className="fas fa-phone"></i>
                 Contact Us
               </Link>
             </div>

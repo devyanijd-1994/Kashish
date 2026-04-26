@@ -187,7 +187,7 @@ export default function Payment() {
                 <div style={{ width: '4px', height: '22px', borderRadius: '2px', background: `linear-gradient(180deg,${T.green},${T.navy})` }} />
                 <h2 style={{ fontSize: '17px', fontWeight: 800, color: T.navyDark, margin: 0 }}>Accepted Payment Methods</h2>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(190px,1fr))', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(190px,100%),1fr))', gap: '12px' }}>
                 {paymentMethods.map((m, i) => (
                   <div key={i} className="py-method-card"
                     style={{ background: T.white, borderRadius: '12px', padding: '18px 16px', boxShadow: '0 2px 12px rgba(30,58,138,0.07)', border: `1px solid ${T.slate200}`, display: 'flex', flexDirection: 'column', gap: '10px' }}>

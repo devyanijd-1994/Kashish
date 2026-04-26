@@ -30,10 +30,11 @@ import OurDisclaimer from './pages/policies/OurDisclaimer';
 import OurRefundPolicy from './pages/policies/OurRefundPolicy';
 
 function Layout({ children, useHomeFooter = false }) {
+  const location = useLocation();
   return (
     <>
       {/* <Topbar /> */}
-      <DisclaimerTicker />
+      {location.pathname === '/' && <DisclaimerTicker />}
       <Navbar />
       <main>{children}</main>
       {useHomeFooter ? <HomeFooter /> : <Footer />}
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/payment" element={<Layout><Payment /></Layout>} />
+        <Route path="/payment-option" element={<Layout><Payment /></Layout>} />
 
         {/* Services */}
         <Route path="/stock-cash" element={<Layout><StockCash /></Layout>} />
