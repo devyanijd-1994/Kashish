@@ -1,0 +1,259 @@
+:root {
+  --main-col: #99cc33;
+  --dark-col: #212121;
+  --light-col: #ffffff;
+  --bg-col: #ffffff;
+
+  /* Spacing */
+  --wrapper-width: 1260px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-col);
+}
+
+.wrapper {
+  max-width: var(--wrapper-width);
+  padding: 10px 30px;
+  margin: auto;
+
+  @media (width < 576px) {
+    padding: 10px 20px;
+  }
+}
+
+/* -- Common Classes */
+.bg-main {
+  background-color: var(--main-col) !important;
+}
+.text-main {
+  color: var(--main-col) !important;
+}
+.heading {
+  color: var(--main-col);
+  text-transform: uppercase;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+.title {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+.tagline {
+  font-size: 0.95rem;
+  font-weight: 500;
+  max-width: 1100px;
+  margin: auto;
+}
+.fs-7 {
+  font-size: 0.85rem !important;
+}
+.fs-8 {
+  font-size: 0.75rem !important;
+}
+.fs-9 {
+  font-size: 0.65rem !important;
+}
+
+/* -- HEADER -- */
+.header--top {
+  height: 100px;
+  padding: 10px 15px;
+
+  @media (width < 576px) {
+    height: 50px;
+  }
+}
+.header--img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+
+  @media (width < 576px) {
+    height: 100%;
+  }
+}
+.header--tagline {
+  font-size: 1.25rem;
+
+  @media (width < 576px) {
+    font-size: 1rem;
+  }
+}
+.header--link {
+  color: var(--light-col);
+  text-decoration: none;
+  font-weight: 600;
+  padding-right: 25px;
+  margin-right: 25px;
+  border-right: 1px solid var(--dark-col);
+
+  &:last-of-type {
+    padding-right: 0px;
+    margin-right: 0px;
+    border-right: none;
+  }
+
+  .header--link-icon {
+    margin-right: 15px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Landing */
+.landing--section {
+  background: url('../media/images/bgs/slide-1.jpg') no-repeat center/cover;
+}
+
+/* why choose us */
+
+.swiper-container {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  isolation: isolate;
+  position: relative;
+
+  @media (width < 525px) {
+    height: 600px;
+  }
+}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: contain; */
+  }
+}
+.swiper-button-next,
+.swiper-button-prev {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: auto !important;
+  padding: 5px 15px;
+
+  &::after {
+    font-size: 1.25rem !important;
+    font-weight: bold;
+    color: var(--light-col);
+  }
+}
+
+.why-choose--card {
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+.why-choose--card-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+.why-choose--card-icon {
+  font-size: 5rem;
+}
+
+/* Our service */
+.our-service {
+  background: url('../media/images/bgs/bg-parallax.jpg') no-repeat center/cover
+    fixed;
+}
+.service-card {
+  text-align: center;
+  transition: 0.3s;
+  height: 100% !important;
+
+  &:hover {
+    transform: translateY(-5px);
+    background-color: var(--main-col) !important;
+    color: var(--light-col) !important;
+
+    & .btn {
+      background-color: var(--light-col) !important;
+      color: var(--main-col) !important;
+
+      &:hover {
+        background-color: transparent !important;
+        color: var(--light-col) !important;
+      }
+    }
+  }
+
+  .service-card--icon {
+    font-size: 3rem;
+  }
+}
+
+/*  */
+.request-call--input {
+  width: 50% !important;
+
+  @media (width < 768px) {
+    width: 100% !important;
+  }
+}
+
+/* Footer */
+.footer--section {
+  background: url('../media/images/bgs/breadcrumb.jpg') no-repeat center/cover;
+}
+.footer_class {
+  margin-top: 70px;
+}
+.decoration {
+  text-decoration: none;
+  color: white;
+}
+
+/* Whatsapp */
+.whatsapp-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #25d366;
+  color: white;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  text-decoration: none;
+  border-radius: 999px;
+  position: fixed;
+  bottom: 18px;
+  right: 20px;
+
+  @media (width < 576px) {
+    left: 15px;
+    right: 15px;
+    width: auto;
+  }
+}
+
+/* ----------- ANIMATIONS ----------- */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.bounce-hover:hover {
+  animation: bounce 0.6s ease;
+}
